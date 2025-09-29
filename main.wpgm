@@ -1,0 +1,35 @@
+import wollok.game.*
+
+import chef.*
+import comida.*
+
+
+program PepitaGame {
+	game.title("Pepita")
+	game.height(16)
+	game.width(32)
+	game.cellSize(32) 
+
+    game.boardGround("fondo_test.jpg")
+    game.addVisual(filete)
+	game.addVisual(personajetest)
+	game.addVisual(personajetest2)
+	
+	personajetest.configurarTeclas()
+
+	personajetest2.configurarTeclas()
+
+	game.onCollideDo(personajetest, { otro =>
+    if (otro == personajetest2) {
+      personajetest.retroceder()
+      personajetest2.retroceder()
+    }
+  })
+
+
+
+	game.start() 
+
+	game.onCollideDo(personajetest, {comida => personajetest.loLevanta(comida)})
+	game.onCollideDo(personajetest2, {comida => personajetest2.loLevanta(comida)})
+}
