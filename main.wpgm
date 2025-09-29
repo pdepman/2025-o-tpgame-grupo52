@@ -1,5 +1,5 @@
 import wollok.game.*
-
+import hitbox.*
 import chef.*
 import comida.*
 
@@ -11,25 +11,19 @@ program PepitaGame {
 	game.cellSize(32) 
 
     game.boardGround("fondo_test.jpg")
-    game.addVisual(filete)
-	game.addVisual(personajetest)
-	game.addVisual(personajetest2)
+    game.addVisual(pan)
+	game.addVisual(chef1)
+	game.addVisual(chef2)
+	game.addVisual(duro)
+	game.addVisual(duro2)
 	
-	personajetest.configurarTeclas()
+	
+	chef1.configurarTeclas() 
 
-	personajetest2.configurarTeclas()
-
-	game.onCollideDo(personajetest, { otro =>
-    if (otro == personajetest2) {
-      personajetest.retroceder()
-      personajetest2.retroceder()
-    }
-  })
-
-
+	chef2.configurarTeclas()
 
 	game.start() 
 
-	game.onCollideDo(personajetest, {comida => personajetest.loLevanta(comida)})
-	game.onCollideDo(personajetest2, {comida => personajetest2.loLevanta(comida)})
+	game.onCollideDo(chef1, {comida => chef1.loLevanta(comida)})
+	game.onCollideDo(chef2, {comida => chef2.loLevanta(comida)})
 }

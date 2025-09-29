@@ -1,14 +1,13 @@
-object filete {
-  var position = game.at(5,2)
-  const nombre = 'filete'
+class Comida {
+  var property position = game.center()
+  const cortable 
+  const cocinable
+  const property nombre 
 
-  method image() = 'carne_cruda.png'
+  method image() = nombre + ".png"
 
-  method position() = position
-
-  method position(nuevaPosition) {
-    position = nuevaPosition
-  }
-
-  method nombre() = nombre
 }
+
+const pan = new Comida (position = game.at(15,5), cortable= false , cocinable=false, nombre='pan')
+
+
