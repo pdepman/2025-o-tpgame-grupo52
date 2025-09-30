@@ -2,6 +2,8 @@ import wollok.game.*
 import hitbox.*
 import chef.*
 import comida.*
+import elementosDeCocina.*
+
 
 
 program PepitaGame {
@@ -11,19 +13,26 @@ program PepitaGame {
 	game.cellSize(32) 
 
     game.boardGround("fondo_test.jpg")
-    game.addVisual(pan)
+
 	game.addVisual(chef1)
 	game.addVisual(chef2)
-	game.addVisual(duro)
+	game.addVisual(duro)	
+	game.addVisual(cajon)
 	game.addVisual(duro2)
+    game.addVisual(pan)
+    game.addVisual(tomate)
+	game.addVisual(lechuga_cortada)
+	game.addVisual(paty_cocinado)
+	game.addVisual(bacon_cocinado)
+	game.addVisual(huevo_cocinado)
+ 
+
 	
-	
+
 	chef1.configurarTeclas() 
 
 	chef2.configurarTeclas()
 
 	game.start() 
 
-	game.onCollideDo(chef1, {comida => chef1.loLevanta(comida)})
-	game.onCollideDo(chef2, {comida => chef2.loLevanta(comida)})
 }
