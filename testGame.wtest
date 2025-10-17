@@ -8,13 +8,23 @@ import elementosDeCocina.*
 
 describe "test do jogo" {
     test "el Chef no puede avanzar hacia la derecha si tiene otro objeto en esa posicion" {
-        game.start()
-        const cajon = new Cajon (position = game.at(13,3)) //Instanciamos el objeto cajon al lado del chef
-        var posicionChef = chef1.position() //Nos quedamos con la posicion Inicial del chef
+        game.start() 
+        chef1.mover(-3,7) //Posicionamos al chef a la izquierda del objeto en el (10,10), osea, en el (9,10)
+        var posIni = chef1.position() 
         if ((topeDer.position().x() + 24) > chef1.position().x()){
         chef1.mover(1,0) //Tratamos de desplazar al chef 1 posicion a la derecha
         } 
-        assert.equals(posicionChef, chef1.position())
+        assert.equals(posIni, chef1.position())
+    }
+
+    test "el Chef no puede avanzar hacia la izquierda si tiene otro objeto en esa posicion" {
+        game.start()
+        chef1.mover(-1,7) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (11,10)
+        var posIni = chef1.position() //Nos quedamos con su posicion inical
+        if ((topeIzq.position().x() + 8) < chef1.position().x()){ 
+        chef1.mover(-1,0)
+        }
+        assert.equals(posIni, chef1.position())
     }
 
 }
