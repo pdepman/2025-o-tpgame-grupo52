@@ -5,8 +5,7 @@ class Comida {
   const cocinable
   const property nombre 
 
-  method image() = nombre + ".png"
-
+  method image() = nombre + ".png" 
   
 }
 

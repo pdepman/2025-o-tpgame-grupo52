@@ -12,14 +12,14 @@ class Personajetest {
   const ABAJO = 2
   const ARRIBA = 3
   const IZQUIERDA = 4
-  
+  var sufijo = "Default"
   method position() = position
   
   method position(nuevaPosition) {
     position = nuevaPosition
   }
   
-  method image() = ("test" + cambio) + ".png"
+  method image() = "chef" + sufijo + ".png"
   
   method mover(dx, dy) {
     var nueva = game.at(position.x() + dx, position.y() + dy)
@@ -32,51 +32,46 @@ class Personajetest {
   method hayColisionEn(destino) = destino == chef2.position()
   
   method configurarTeclas() {
-    // izquierda
+    //izquierda
     keyboard.a().onPressDo(
       { 
-        if ((topeIzq.position().x() + 8) < self.position().x()) self.mover(
-            -1,
-            0
-          )
+        if ((topeIzq.position().x() + 8) < self.position().x()) 
+        self.mover(-1,0)
         orientacion = IZQUIERDA
+        sufijo = "Izquierda"
       }
     )
     // derecha
     keyboard.d().onPressDo(
       { 
-        if ((topeDer.position().x() + 24) > self.position().x()) self.mover(
-            1,
-            0
-          )
+        if ((topeDer.position().x() + 24) > self.position().x()) 
+        self.mover(1,0)
         orientacion = DERECHA
+        sufijo = "Derecha"
       }
     )
     // abajo
     keyboard.s().onPressDo(
       { 
-        if ((topeArriba.position().y() + 1) < self.position().y()) self.mover(
-            0,
-            -1
-          )
+        if ((topeArriba.position().y() + 1) < self.position().y()) 
+        self.mover(0,-1)
         orientacion = ABAJO
+        sufijo = "Default"
       }
     )
     // arriba
     keyboard.w().onPressDo(
       { 
-        if ((topeArriba.position().y() + 14) > self.position().y()) self.mover(
-            0,
-            1
-          )
+        if ((topeArriba.position().y() + 14) > self.position().y()) 
+        self.mover(0,1)
         orientacion = ARRIBA
+        sufijo = "Espaldas"
       }
     )
     keyboard.e().onPressDo({ self.tomarComida() })
   }
   
   method tienePan() =sostiene.any({ c => c == pan })
-  
   
   method tomarComida() {
     if (not(self.tienePan())) {
@@ -120,41 +115,37 @@ class Personajetest2 inherits Personajetest {
     // izquierda
     keyboard.left().onPressDo(
       { 
-        if ((topeIzq.position().x() + 8) < self.position().x()) self.mover(
-            -1,
-            0
-          )
+        if ((topeIzq.position().x() + 8) < self.position().x()) 
+        self.mover(-1,0)
         orientacion = IZQUIERDA
+        sufijo = "Izquierda"
       }
     )
     // derecha
     keyboard.right().onPressDo(
       { 
-        if ((topeDer.position().x() + 24) > self.position().x()) self.mover(
-            1,
-            0
-          )
+        if ((topeDer.position().x() + 24) > self.position().x()) 
+        self.mover(1,0)
         orientacion = DERECHA
+        sufijo = "Derecha"
       }
     )
     // abajo
     keyboard.down().onPressDo(
       { 
-        if ((topeArriba.position().y() + 1) < self.position().y()) self.mover(
-            0,
-            -1
-          )
+        if ((topeArriba.position().y() + 1) < self.position().y()) 
+        self.mover(0,-1)
         orientacion = ABAJO
+        sufijo = "Default"
       }
     )
     // arriba
     keyboard.up().onPressDo(
       { 
-        if ((topeArriba.position().y() + 14) > self.position().y()) self.mover(
-            0,
-            1
-          )
+        if ((topeArriba.position().y() + 14) > self.position().y()) 
+        self.mover(0,1)
         orientacion = ARRIBA
+        sufijo = "Espaldas"
       }
     )
     keyboard.enter().onPressDo({ self.tomarComida() })

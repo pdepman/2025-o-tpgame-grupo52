@@ -3,23 +3,23 @@ import comida.*
 class Cajon{
     var property position = game.center()
     const tipo = 'pan'
-     method image() ='cajon.png'
+    method image() ='cajon.png'
 
 
-     method puedeMoverA(destinox,destinoy) = destinox==self.position().x() and destinoy==self.position().y()
+    method puedeMoverA(destinox,destinoy) = destinox==self.position().x() and destinoy==self.position().y()
     
-     method aparecerIngrediente() {
+    method aparecerIngrediente() {
     if (not(self.estaOcupado())) {
       game.addVisual(pan)
     }
   
     }
 
-     method estaOcupado() =pan.position()== self.position()
+    method estaOcupado() = pan.position() == self.position()
     
 
 }
-const cajon = new Cajon (position = game.at(18,11))
+const cajon = new Cajon (position = game.at(10,10))
 
 
 // object estufa{
