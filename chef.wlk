@@ -23,10 +23,8 @@ class Personajetest {
   
   method mover(dx, dy) {
     var nueva = game.at(position.x() + dx, position.y() + dy)
-    if ((not pared.todopuedeMoverA(
-        nueva.x(),
-        nueva.y()
-      )) and (not self.hayColisionEn(nueva))) self.position(nueva)
+    if ((not pared.todopuedeMoverA(nueva.x(),nueva.y())) and (not self.hayColisionEn(nueva))) 
+    self.position(nueva)
   }
   
   method hayColisionEn(destino) = destino == chef2.position()

@@ -1,0 +1,20 @@
+//Test!
+
+import wollok.game.*
+import hitbox.*
+import chef.*
+import comida.*
+import elementosDeCocina.*
+
+describe "test do jogo" {
+    test "el Chef no puede avanzar hacia la derecha si tiene otro objeto en esa posicion" {
+        game.start()
+        const cajon = new Cajon (position = game.at(13,3)) //Instanciamos el objeto cajon al lado del chef
+        var posicionChef = chef1.position() //Nos quedamos con la posicion Inicial del chef
+        if ((topeDer.position().x() + 24) > chef1.position().x()){
+        chef1.mover(1,0) //Tratamos de desplazar al chef 1 posicion a la derecha
+        } 
+        assert.equals(posicionChef, chef1.position())
+    }
+
+}
