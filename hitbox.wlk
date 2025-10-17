@@ -14,9 +14,9 @@ const duro =new Bloque (position=game.at(16,5))
 const duro2 =new Bloque (position=game.at(17,5))
 
 object pared {
-  const obstaculos = [duro, duro2, cajon]
+  var obstaculos = [duro, duro2, cajon]
+  
   method obstaculos() = obstaculos
-
   method todopuedeMoverA(destinox,destinoy) = obstaculos.any({obstaculo=>obstaculo.puedeMoverA(destinox,destinoy)})
 
 }
