@@ -48,6 +48,8 @@ class Plato {
         }
     }
 
+    method ingredientes() = ingredientes
+
     method intentarAceptar() {
         var recetaActual = hamburguesa_simple
 
