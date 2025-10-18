@@ -50,16 +50,14 @@ class Plato {
 
     method ingredientes() = ingredientes
 
-    method intentarAceptar() {
-        var recetaActual = hamburguesa_simple
-
-        if (recetaActual.estaCompleta(ingredientes)) {
+    method intentarAceptar(puntos) {
+    var posiblesRecetas = [hamburguesa_simple,hamburguesa_completa,hamburguesa_huevo,sandwich_bacon,ensalada,desayuno_bacon_huevo]
+    var condicion = posiblesRecetas.any({receta => receta.estaCompleta(self.ingredientes())})
+        if (condicion){
             ingredientes.clear()
-            scoreManager.incrementar(10)
-            return true
-        } else {
-            return false
-        }
+            puntos.incrementar(10)
+            //return true
+        } 
     }
 }
 

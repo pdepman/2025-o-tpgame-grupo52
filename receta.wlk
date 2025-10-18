@@ -18,7 +18,7 @@ class Receta {
     }
 }
 
- 
+
 
 const hamburguesa_simple = new Receta(ingredientes=[pan, paty_cocinado])
 const hamburguesa_completa = new Receta(ingredientes=[pan, paty_cocinado, lechuga_cortada, tomate])
