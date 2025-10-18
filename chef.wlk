@@ -15,6 +15,8 @@ class Personajetest {
   var sufijo = "Default"
   method position() = position
   
+  method orientacion() = orientacion 
+
   method position(nuevaPosition) {
     position = nuevaPosition
   }
@@ -25,8 +27,25 @@ class Personajetest {
     var nueva = game.at(position.x() + dx, position.y() + dy)
     if ((not pared.todopuedeMoverA(nueva.x(),nueva.y())) and (not self.hayColisionEn(nueva))) 
     self.position(nueva)
+    self.image()
+    self.moverComida() //Cuando se agarra un objeto, este "acompaña" al chef donde este mira (adelante de el)
   }
   
+  method inventarioVacio() = sostiene.isEmpty()
+
+  method moverComida(){
+    if(!self.inventarioVacio()){ //Si tenemos un objeto agarrado
+      var posChefActual = self.position()
+      var sentidoX = 0
+      var sentidoY = 0
+      if(self.orientacion() == 1) { sentidoX = 1}
+      if(self.orientacion() == 2) { sentidoY = -1}
+      if(self.orientacion() == 3) { sentidoY = 1}
+      if(self.orientacion() == 4) { sentidoX = -1}
+      pan.position(posChefActual.x() + sentidoX , posChefActual.y() + sentidoY)
+    }
+  }
+
   method hayColisionEn(destino) = destino == chef2.position()
   
   method configurarTeclas() {
@@ -69,25 +88,27 @@ class Personajetest {
     keyboard.e().onPressDo({ self.tomarComida() })
   }
   
-  method tienePan() =sostiene.any({ c => c == pan })
+  method tienePan() = sostiene.any({ c => c == pan })
   
   method tomarComida() {
-    if (not(self.tienePan())) {
+    if (self.inventarioVacio()) { //Si no tiene nada
       if (self.hayPan()) {
-        game.removeVisual(pan)
+        //game.removeVisual(pan)
+        pan.estaEnInventario(true) //Actualizamos la comida para decir que está en el inventario 
         self.llevar(pan)
         cambio = "4"
-        var pos = self.position()
-        self.position(game.at(pos.x() - 1, pos.y() - 1))
+        //game.addVisual(pan)
+        //self.moverComida()
       }
     }
     else{
-      game.addVisual(pan)
-      pan.position(self.position())
+      //game.addVisual(pan)
+      var posComida = self.position()
+      pan.position(posComida)
       self.quitar(pan)
       cambio = "3"
-      var pos = self.position()
-        self.position(game.at(pos.x() + 1, pos.y() + 1))
+      //var pos = self.position()
+      self.position(game.at(posComida.x() + 1, posComida.y()))
     }
   }
   

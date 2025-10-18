@@ -14,8 +14,8 @@ program PepitaGame {
 
     game.boardGround("fondo_test.jpg")
 
-	game.addVisual(chef1)
-	game.addVisual(chef2)
+	game.addVisualCharacter(chef1)
+	//game.addVisual(chef2)
 	game.addVisual(duro)	
 	game.addVisual(cajon)
 	game.addVisual(duro2)
@@ -31,7 +31,7 @@ program PepitaGame {
 
 	chef1.configurarTeclas() 
 
-	chef2.configurarTeclas()
+	//chef2.configurarTeclas()
 
 	game.start() 
 

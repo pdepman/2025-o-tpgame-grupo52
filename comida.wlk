@@ -4,8 +4,20 @@ class Comida {
   const cortable 
   const cocinable
   const property nombre 
+  var estaEnInventario = false 
+
+  method estaEnInventario() = estaEnInventario
+  
+  method estaEnInventario(Param) {
+    estaEnInventario = Param 
+  } 
+
 
   method image() = nombre + ".png" 
+
+  method position(newPosX, newPosY){
+    position = game.at(newPosX,newPosY) 
+  }
   
 }
 
