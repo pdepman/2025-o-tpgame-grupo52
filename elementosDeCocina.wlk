@@ -1,4 +1,6 @@
 import comida.*
+import receta.*
+import score.*
 
 class Cajon{
     var property position = game.center()
@@ -32,3 +34,31 @@ const cajon = new Cajon (position = game.at(10,10))
 //         position = self.encontrarSillaDesocupada()
 //         cliente.fantasmasVisibles().add(self)
 //         game.addVisual(self)
+
+
+
+
+class Plato { 
+    var property position = game.at(12, 11)
+    var ingredientes = []
+
+    method agregarIngrediente(unaComida) {
+        if (unaComida != null) {
+            ingredientes.add(unaComida)
+        }
+    }
+
+    method intentarAceptar() {
+        var recetaActual = hamburguesa_simple
+
+        if (recetaActual.estaCompleta(ingredientes)) {
+            ingredientes.clear()
+            scoreManager.incrementar(10)
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+const plato = new Plato()
