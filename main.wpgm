@@ -12,10 +12,12 @@ program PepitaGame {
 	game.width(32)
 	game.cellSize(32) 
 
+
     game.boardGround("fondo_test.jpg")
 
-	game.addVisualCharacter(chef1)
-	//game.addVisual(chef2)
+	// game.addVisualCharacter(jugador1)
+	game.addVisual(jugador1)
+	game.addVisual(jugador2)
 	game.addVisual(duro)	
 	game.addVisual(cajon)
 	game.addVisual(duro2)
@@ -27,11 +29,10 @@ program PepitaGame {
 	game.addVisual(huevo_cocinado)
  
 
-	
 
-	chef1.configurarTeclas() 
+	jugador1.configurarTeclas() 
 
-	//chef2.configurarTeclas()
+	jugador2.configurarTeclas()
 
 	game.start() 
 
