@@ -16,42 +16,42 @@ describe "test do jogo" {
     const puntosDePrueba = new ScoreManager()
     test "el Chef no puede avanzar hacia la derecha si tiene otro objeto en esa posicion" { 
        game.start() //El chef arranca en la posicion (12,3)
-        chef1.mover(-3,7) //Posicionamos al chef a la izquierda del objeto en el (10,10), osea, en el (9,10)
-        var posIni = chef1.position() 
-        if ((topeDer.position().x() + 24) > chef1.position().x()){
-        chef1.mover(1,0) //Tratamos de desplazar al chef 1 posicion a la derecha
+        jugador1.mover(-3,7) //Posicionamos al chef a la izquierda del objeto en el (10,10), osea, en el (9,10)
+        var posIni = jugador1.position() 
+        if ((topeDer.position().x() + 24) > jugador1.position().x()){
+        jugador1.mover(1,0) //Tratamos de desplazar al chef 1 posicion a la derecha
         } 
-        assert.equals(posIni, chef1.position())
+        assert.equals(posIni, jugador1.position())
     }
 
     test "el Chef no puede avanzar hacia la izquierda si tiene otro objeto en esa posicion" {
         game.start() //El chef arranca en la posicion (12,3)
-        chef1.mover(-1,7) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (11,10)
-        var posIni = chef1.position() //Nos quedamos con su posicion inical
-        if ((topeIzq.position().x() + 8) < chef1.position().x()){ 
-        chef1.mover(-1,0)
+        jugador1.mover(-1,7) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (11,10)
+        var posIni = jugador1.position() //Nos quedamos con su posicion inical
+        if ((topeIzq.position().x() + 8) < jugador1.position().x()){ 
+        jugador1.mover(-1,0)
         }
-        assert.equals(posIni, chef1.position())
+        assert.equals(posIni, jugador1.position())
     }
 
     test "el Chef no puede avanzar hacia arriba si tiene otro objeto en esa posicion"{
         game.start() //El chef arranca en la posicion (12,3)
-        chef1.mover(-2,6) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,9)
-        var posIni = chef1.position() //Nos quedamos con su posicion inical
-        if ((topeArriba.position().y() + 14) > chef1.position().y()){
-        chef1.mover(0,1)
+        jugador1.mover(-2,6) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,9)
+        var posIni = jugador1.position() //Nos quedamos con su posicion inical
+        if ((topeArriba.position().y() + 14) > jugador1.position().y()){
+        jugador1.mover(0,1)
         }
-        assert.equals(posIni, chef1.position())
+        assert.equals(posIni, jugador1.position())
     }
 
     test "el Chef no puede avanzar hacia abajo si tiene otro objeto en esa posicion"{
         game.start() //El chef arranca en la posicion (12,3)
-        chef1.mover(-2,8) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,11)
-        var posIni = chef1.position() //Nos quedamos con su posicion inical
-        if ((topeArriba.position().y() + 1) < chef1.position().y()){
-        chef1.mover(0,-1)
+        jugador1.mover(-2,8) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,11)
+        var posIni = jugador1.position() //Nos quedamos con su posicion inical
+        if ((topeArriba.position().y() + 1) < jugador1.position().y()){
+        jugador1.mover(0,-1)
         }
-        assert.equals(posIni, chef1.position())
+        assert.equals(posIni, jugador1.position())
     }
 
     test "Una receta es valida si tiene todos sus ingredientes"{
