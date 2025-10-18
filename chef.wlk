@@ -93,22 +93,15 @@ class Personajetest {
   method tomarComida() {
     if (self.inventarioVacio()) { //Si no tiene nada
       if (self.hayPan()) {
-        //game.removeVisual(pan)
         pan.estaEnInventario(true) //Actualizamos la comida para decir que está en el inventario 
         self.llevar(pan)
         cambio = "4"
-        //game.addVisual(pan)
-        //self.moverComida()
       }
     }
     else{
-      //game.addVisual(pan)
-      var posComida = self.position()
-      pan.position(posComida)
+      self.moverComida() 
       self.quitar(pan)
       cambio = "3"
-      //var pos = self.position()
-      self.position(game.at(posComida.x() + 1, posComida.y()))
     }
   }
   
