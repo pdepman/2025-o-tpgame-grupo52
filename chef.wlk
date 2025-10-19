@@ -60,11 +60,12 @@ class Chef {
   }
 
   method intentarMover(direccion) {
+  if((orientacion==direccion.orientacionConstante(self))){
   if (direccion.puedeMover(self)) {
     direccion.mover(self)
-    orientacion = direccion.orientacionConstante(self)
-    sufijo = direccion.sufijo()
-  }
+  }}
+  sufijo = direccion.sufijo()
+  orientacion = direccion.orientacionConstante(self)
 }
   
   method tienePan() = sostiene.any({ c => c == pan })
