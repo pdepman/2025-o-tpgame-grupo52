@@ -55,7 +55,7 @@ class Plato {
 
     method intentarAceptar(puntos) {
     var posiblesRecetas = [hamburguesa_simple,hamburguesa_completa,hamburguesa_huevo,sandwich_bacon,ensalada,desayuno_bacon_huevo]
-    var condicion = posiblesRecetas.any({receta => receta.estaCompleta(self.ingredientes())})
+    var condicion = posiblesRecetas.any({receta => receta.completa(self.ingredientes())})
         if (condicion){
             ingredientes.clear()
             puntos.incrementar(10)
