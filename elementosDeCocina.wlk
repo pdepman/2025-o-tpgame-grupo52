@@ -66,7 +66,9 @@ class Plato {
     var condicion = posiblesRecetas.any({receta => receta.completa(self.ingredientes())})
         if (condicion){
             ingredientes.clear()
-            puntos.incrementar(10)
+            scoreManager.sumar(10)
+            marcador.actualizar()
+
             //return true
         } 
     }
