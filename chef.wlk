@@ -4,7 +4,7 @@ import comida.*
 import elementosDeCocina.*
 
 class Chef {
-  var cambio = "3"
+  var cambio = ""
   var sostiene = []
   var  orientacion = 1
   var position = game.origin()
@@ -21,7 +21,7 @@ class Chef {
     position = nuevaPosition
   }
   
-  method image() = "chef" + sufijo + ".png"
+  method image() = "chef" + sufijo + cambio + ".png"
   
   method mover(dx, dy) {
     var nueva = game.at(position.x() + dx, position.y() + dy)
@@ -75,13 +75,13 @@ class Chef {
       if (self.hayPan()) {
         pan.estaEnInventario(true) //Actualizamos la comida para decir que está en el inventario 
         self.llevar(pan)
-        cambio = "4"
+        cambio = "_agarro"
       }
     }
     else{
       self.moverComida() 
       self.quitar(pan)
-      cambio = "3"
+      cambio = ""
     }
   }
   
