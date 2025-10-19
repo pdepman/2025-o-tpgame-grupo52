@@ -43,7 +43,7 @@ class Plato {
 
     method image() = "test3.png" 
 
-    var ingredientes = []
+    var ingredientes  = []
 
     method agregarIngrediente(unaComida) {
         if (unaComida != null) {

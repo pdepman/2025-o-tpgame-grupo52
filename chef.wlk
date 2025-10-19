@@ -27,8 +27,7 @@ class Chef {
     var nueva = game.at(position.x() + dx, position.y() + dy)
     if ((not pared.todopuedeMoverA(nueva.x(),nueva.y())) and (not self.hayColisionEn(nueva))) 
     self.position(nueva)
-    self.image()
-    self.moverComida() //Cuando se agarra un objeto, este "acompaña" al chef donde este mira (adelante de el)
+   //Cuando se agarra un objeto, este "acompaña" al chef donde este mira (adelante de el)
   }
 
 
@@ -66,6 +65,7 @@ class Chef {
   }}
   sufijo = direccion.sufijo()
   orientacion = direccion.orientacionConstante(self)
+  self.moverComida()
 }
   
   method tienePan() = sostiene.any({ c => c == pan })

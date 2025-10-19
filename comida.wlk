@@ -16,7 +16,7 @@ class Comida {
   method image() = nombre + ".png" 
 
   method position(newPosX, newPosY){
-    position = game.at(newPosX,newPosY) 
+    position = game.at(newPosX,newPosY)  
   }
   
 }
