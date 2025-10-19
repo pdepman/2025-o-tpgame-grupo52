@@ -3,7 +3,8 @@ import hitbox.*
 import chef.*
 import comida.*
 import elementosDeCocina.*
-
+import score.*
+import temporizador.*
 
 
 program PepitaGame {
@@ -15,6 +16,8 @@ program PepitaGame {
 
     game.boardGround("fondo_test.jpg")
 
+	temporizador.iniciar()
+	
 	// game.addVisualCharacter(jugador1)
 	game.addVisual(jugador1)
 	game.addVisual(jugador2)
