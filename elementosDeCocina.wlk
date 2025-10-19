@@ -41,7 +41,15 @@ const cajon = new Cajon (position = game.at(10,10))
 class Plato { 
     var property position = game.at(12, 11)
 
-    method image() = "plato.png" 
+    var property comida =""
+
+    method comida(cosa){
+        comida = cosa
+    }
+
+
+
+    method image() = "plato"+comida+".png" 
 
     var ingredientes  = []
 

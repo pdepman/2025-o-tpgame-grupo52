@@ -82,6 +82,14 @@ class Chef {
       self.moverComida() 
       self.quitar(pan)
       cambio = ""
+      if(pan.position() == plato.position()){
+        plato.agregarIngrediente(pan) 
+        game.removeVisual(pan)
+        plato.comida(pan.nombre())
+        pan.position(100,100) 
+        
+      
+      }
     }
   }
   

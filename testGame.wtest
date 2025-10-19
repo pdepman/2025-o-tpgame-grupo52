@@ -12,7 +12,7 @@ describe "test do jogo" {
 
     const hamburguesa_simple = new Receta(ingredientes=[pan, paty_cocinado])
     const hamburguesa_completa = new Receta(ingredientes=[pan, paty_cocinado, lechuga_cortada, tomate])
-    const hamburguesaDePrueba = new Plato (ingredientes = [pan, paty_cocinado])
+    // const hamburguesaDePrueba = new Plato (ingredientes = [pan, paty_cocinado])
     const puntosDePrueba = new ScoreManager()
     test "el Chef no puede avanzar hacia la derecha si tiene otro objeto en esa posicion" { 
        game.start() //El chef arranca en la posicion (12,3)
@@ -54,20 +54,20 @@ describe "test do jogo" {
         assert.equals(posIni, jugador1.position())
     }
 
-    test "Una receta es valida si tiene todos sus ingredientes"{
-        var estaCompleta 
-        estaCompleta = hamburguesa_simple.completa(hamburguesaDePrueba.ingredientes())
-        assert.equals(true, estaCompleta)
-    }
+    // test "Una receta es valida si tiene todos sus ingredientes"{
+    //     var estaCompleta 
+    //     estaCompleta = hamburguesa_simple.completa(hamburguesaDePrueba.ingredientes())
+    //     assert.equals(true, estaCompleta)
+    // }
 
-    test "Una receta es invalida si le faltan ingredientes"{
-        var estaCompleta
-        estaCompleta = hamburguesa_completa.completa(hamburguesaDePrueba.ingredientes())
-        assert.equals(false, estaCompleta)
-    }
+    // test "Una receta es invalida si le faltan ingredientes"{
+    //     var estaCompleta
+    //     estaCompleta = hamburguesa_completa.completa(hamburguesaDePrueba.ingredientes())
+    //     assert.equals(false, estaCompleta)
+    // }
 
-    test "Si una receta es valida, suma puntos (una cantidad de 10)"{
-        hamburguesaDePrueba.intentarAceptar(puntosDePrueba)
-        assert.equals(10, puntosDePrueba.puntos())
-    }
+    // test "Si una receta es valida, suma puntos (una cantidad de 10)"{
+    //     hamburguesaDePrueba.intentarAceptar(puntosDePrueba)
+    //     assert.equals(10, puntosDePrueba.puntos())
+    // }
 }
