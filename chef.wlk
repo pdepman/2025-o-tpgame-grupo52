@@ -5,7 +5,7 @@ import elementosDeCocina.*
 
 class Chef {
   var cambio = ""
-  var sostiene = []
+  var sostiene = null
   var  orientacion = 1
   var position = game.origin()
   const property DERECHA = 1
@@ -31,9 +31,9 @@ class Chef {
   }
 
 
-  method inventarioVacio() = sostiene.isEmpty()
+ 
 
-  method moverComida(){
+  method moverComida(ingrediente){
     if(!self.inventarioVacio()){ //Si tenemos un objeto agarrado
       var posChefActual = self.position()
       var sentidoX = 0
@@ -42,7 +42,7 @@ class Chef {
       if(self.orientacion() == 2) { sentidoY = -1}
       if(self.orientacion() == 3) { sentidoY = 1}
       if(self.orientacion() == 4) { sentidoX = -1}
-      pan.position(posChefActual.x() + sentidoX , posChefActual.y() + sentidoY)
+      ingrediente.position(posChefActual.x() + sentidoX , posChefActual.y() + sentidoY)
     }
   }
 
@@ -59,55 +59,109 @@ class Chef {
   }
 
   method intentarMover(direccion) {
+    
   if((orientacion==direccion.orientacionConstante(self))){
   if (direccion.puedeMover(self)) {
     direccion.mover(self)
   }}
   sufijo = direccion.sufijo()
   orientacion = direccion.orientacionConstante(self)
-  self.moverComida()
+  self.moverComida(sostiene)
 }
+
+method ingredienteCercano() {
+  var posicionAdelante = self.position()
   
-  method tienePan() = sostiene.any({ c => c == pan })
-  
-  method tomarComida() {
-    if (self.inventarioVacio()) { //Si no tiene nada
-      if (self.hayPan()) {
-        pan.estaEnInventario(true) //Actualizamos la comida para decir que está en el inventario 
-        self.llevar(pan)
-        cambio = "_agarro"
-      }
+  if (orientacion == DERECHA)  posicionAdelante = posicionAdelante.right(1)
+  if (orientacion == IZQUIERDA) posicionAdelante = posicionAdelante.left(1)
+  if (orientacion == ARRIBA)    posicionAdelante = posicionAdelante.up(1)
+  if (orientacion == ABAJO)     posicionAdelante = posicionAdelante.down(1)
+
+  return objetosmobibles.find({ i => i.position() == posicionAdelante })
+}
+method inventarioVacio() = sostiene == null
+
+method llevar(ingrediente) {
+  sostiene = ingrediente
+}
+
+method quitar(ingrediente) {
+  if (sostiene == ingrediente) {
+    sostiene = null
+  }
+}
+
+method celdasAdyacente() = [
+  self.position().left(1),
+  self.position().right(1),
+  self.position().up(1),
+  self.position().down(1)
+]
+ method tomarComida() {
+  if (self.inventarioVacio()) {
+    const ingredienteCercano = self.ingredienteCercano()
+    if (ingredienteCercano != null) {
+      ingredienteCercano.estaEnInventario(true)
+      self.llevar(ingredienteCercano)
+      cambio = "_agarro"
     }
-    else{
-      self.moverComida() 
-      self.quitar(pan)
-      cambio = ""
-      if(pan.position() == plato.position()){
-        plato.agregarIngrediente(pan) 
-        game.removeVisual(pan)
-        plato.comida(pan.nombre())
-        pan.position(100,100) 
+  } else {
+    const ingrediente = sostiene
+    self.moverComida(ingrediente)
+    self.quitar(ingrediente)
+    cambio = ""
+
+    if (ingrediente.position() == plato.position() and ingrediente != plato) {
+      plato.agregarIngrediente(ingrediente)
+      game.removeVisual(ingrediente)
+      plato.comida(ingrediente.nombre())
+      ingrediente.position(100, 100)
+    }
+    if (plato.position() == cajon.position()){
+      plato.intentarAceptar()
+    }
+  }
+}
+  // method tienePan() = sostiene.any({ c => c == pan })
+  
+  // method tomarComida() {
+  //   if (self.inventarioVacio()) { //Si no tiene nada
+  //     if (self.hayPan()) {
+  //       pan.estaEnInventario(true) //Actualizamos la comida para decir que está en el inventario 
+  //       self.llevar(pan)
+  //       cambio = "_agarro"
+  //     }
+  //   }
+  //   else{
+  //     self.moverComida() 
+  //     self.quitar(pan)
+  //     cambio = ""
+  //     if(pan.position() == plato.position()){
+  //       plato.agregarIngrediente(pan) 
+  //       game.removeVisual(pan)
+  //       plato.comida(pan.nombre())
+  //       pan.position(100,100) 
         
       
-      }
-    }
-  }
+  //     }
+  //   }
+  // }
   
-  method celdasAdyacente() = [
-    self.position().left(1),
-    self.position().right(1),
-    self.position().up(1),
-    self.position().down(1)
-  ]
+  // method celdasAdyacente() = [
+  //   self.position().left(1),
+  //   self.position().right(1),
+  //   self.position().up(1),
+  //   self.position().down(1)
+  // ]
   
-  method hayPan() = self.celdasAdyacente().any({ c => c == pan.position() })
+  // method hayPan() = self.celdasAdyacente().any({ c => c == pan.position() })
   
-  method llevar(comida) {
-    sostiene.add(comida)
-  }
-   method quitar(comida) {
-    sostiene.remove(comida)
-  }
+  // method llevar(comida) {
+  //   sostiene.add(comida)
+  // }
+  //  method quitar(comida) {
+  //   sostiene.remove(comida)
+  // }
 }
 
 class Chef2 inherits Chef {
@@ -157,3 +211,5 @@ object abajo  {
   method sufijo() = "Default"
   method orientacionConstante(personaje) = personaje.ABAJO()
 }
+
+const objetosmobibles =[plato,pan,lechuga_cortada,tomate,paty_cocinado,bacon_cocinado,huevo_cocinado]

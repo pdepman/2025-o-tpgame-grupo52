@@ -21,6 +21,6 @@ object marcador {
     method fontSize() = 20
 
     method actualizar() {
-        puntos = scoreManager.obtener()
+        puntos = puntos +10 
     }
 }

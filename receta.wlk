@@ -39,7 +39,7 @@ object sistemaDeRecetas {
     todasLasRecetas.filter({ receta => receta.vaPorBuenCamino(ingredientesActuales) })
   
   method completita(ingredientesActuales) =
-    todasLasRecetas.filter({ receta => receta.completa(ingredientesActuales) })
+    todasLasRecetas.any({ receta => receta.completa(ingredientesActuales) })
   
 
 }

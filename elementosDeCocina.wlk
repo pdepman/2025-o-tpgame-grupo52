@@ -38,20 +38,28 @@ const cajon = new Cajon (position = game.at(10,10))
 
 
 
-class Plato { 
-    var property position = game.at(12, 11)
-
-    var property comida =""
-
-    method comida(cosa){
-        comida = cosa
-    }
-
-
-
-    method image() = "plato"+comida+".png" 
-
+class Plato {    
     var ingredientes  = []
+    var cantidad =0 
+    var property position = game.at(12, 11)
+    var estaEnInventario = false 
+    method estaEnInventario() = estaEnInventario
+    method estaEnInventario(Param) {
+    estaEnInventario = Param 
+  } 
+
+
+  method position(newPosX, newPosY){
+    position = game.at(newPosX,newPosY)  
+  }
+
+    method cantidad()=ingredientes.size()
+
+
+
+    method image() = "plato"+self.cantidad()+".png" 
+
+ 
 
     method agregarIngrediente(unaComida) {
         if (unaComida != null) {
@@ -61,13 +69,11 @@ class Plato {
 
     method ingredientes() = ingredientes
 
-    method intentarAceptar(puntos) {
-    var posiblesRecetas = [hamburguesa_simple,hamburguesa_completa,hamburguesa_huevo,sandwich_bacon,ensalada,desayuno_bacon_huevo]
-    var condicion = posiblesRecetas.any({receta => receta.completa(self.ingredientes())})
-        if (condicion){
-            ingredientes.clear()
-            scoreManager.sumar(10)
+    method intentarAceptar() {
+        if (sistemaDeRecetas.completita(ingredientes)){
             marcador.actualizar()
+            plato.position(12, 11)
+            ingredientes.clear()
 
             //return true
         } 

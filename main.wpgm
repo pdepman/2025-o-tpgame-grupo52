@@ -1,3 +1,4 @@
+
 import wollok.game.*
 import hitbox.*
 import chef.*
@@ -6,7 +7,7 @@ import elementosDeCocina.*
 import score.*
 import temporizador.*
 
-
+ 
 program PepitaGame {
 	game.title("Pepita")
 	game.height(16)
@@ -32,7 +33,7 @@ program PepitaGame {
 	game.addVisual(huevo_cocinado)
 	game.addVisual(plato)
 	game.addVisual(marcador)
-    marcador.actualizar()
+
 
 
 
