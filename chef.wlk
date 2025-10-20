@@ -115,15 +115,22 @@ class Chef {
       self.quitar(ingrediente)
       cambio = ""
       
-      if ((ingrediente.position() == plato.position()) and (ingrediente != plato)) {
-        plato.agregarIngrediente(ingrediente)
+      const platoDestino = platos.find(
+        { p => p.position() == ingrediente.position() }
+      )
+      
+      if ((platoDestino != null) and (ingrediente != platoDestino)) {
+        platoDestino.agregarIngrediente(ingrediente)
         game.removeVisual(ingrediente)
         ingrediente.volver()
         game.addVisual(ingrediente)
-        plato.comida(ingrediente.nombre())
       }
-      if (plato.position() == cajon.position()) plato.intentarAceptar()
-      if (plato.position() == tacho.position()) plato.eliminarComida()
+      platos.forEach(
+        { p =>
+          if (p.position() == cajon.position()) p.intentarAceptar()
+          if (p.position() == tacho.position()) p.eliminarComida()
+        }
+      )
     }
   }
 }
@@ -201,11 +208,12 @@ object abajo {
 }
 
 const objetosmobibles = [
-  plato,
   pan,
   lechuga_cortada,
   tomate,
   paty_cocinado,
   bacon_cocinado,
   huevo_cocinado
-]
+] + platos
+
+const platos = [plato1, plato2]

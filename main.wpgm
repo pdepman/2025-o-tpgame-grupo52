@@ -31,7 +31,8 @@ program PepitaGame {
 	game.addVisual(paty_cocinado)
 	game.addVisual(bacon_cocinado)
 	game.addVisual(huevo_cocinado)
-	game.addVisual(plato)
+	game.addVisual(plato1)
+	game.addVisual(plato2)
 	game.addVisual(marcador)
 	game.addVisual(tacho)
 

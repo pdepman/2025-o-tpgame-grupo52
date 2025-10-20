@@ -1,4 +1,5 @@
 
+
 class Comida {
   var property position = posicionOriginal
   const property posicionOriginal 

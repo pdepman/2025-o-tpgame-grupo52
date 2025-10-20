@@ -48,7 +48,8 @@ const tacho = new Tacho (position = game.at(10,5))
 
 class Plato {    
     const ingredientes  = []
-    var property position = game.at(12, 11)
+    var property position = posicionOriginal
+    const property posicionOriginal 
     var estaEnInventario = false 
     method estaEnInventario() = estaEnInventario
     method estaEnInventario(param) {
@@ -79,7 +80,7 @@ class Plato {
     method intentarAceptar() {
         if (sistemaDeRecetas.completita(ingredientes)){
             marcador.actualizar()
-            self.position(12, 11)
+            self.volver()
             ingredientes.clear()
 
             //return true
@@ -88,8 +89,12 @@ class Plato {
 
     method eliminarComida(){
       ingredientes.clear()
-      self.position(12, 11)
+      self.volver()
     }
+    method volver(){
+    position = posicionOriginal
+  }
 }
 
-const plato = new Plato()
+const plato1 = new Plato(posicionOriginal= game.at(12, 11))
+const plato2 = new Plato(posicionOriginal =game.at(19, 11))
