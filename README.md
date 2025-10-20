@@ -2,7 +2,10 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 
 ## Equipo de desarrollo:
 
-- Completar
+- Sapito Sapo 
+- Jefe Rey
+- Akano kago
+- Tun tun sahur
 
 ## Introducción
 
