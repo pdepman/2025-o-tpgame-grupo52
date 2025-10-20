@@ -26,15 +26,8 @@ const ensalada = new Receta(ingredientes=[lechuga_cortada, tomate])
 const desayuno_bacon_huevo = new Receta(ingredientes=[huevo_cocinado, bacon_cocinado])
 
 object sistemaDeRecetas {
-  const todasLasRecetas = [
-    hamburguesa_simple,
-    hamburguesa_completa,
-    hamburguesa_huevo,
-    sandwich_bacon,
-    ensalada,
-    desayuno_bacon_huevo
-  ]
-
+  const todasLasRecetas = [hamburguesa_simple,hamburguesa_completa,hamburguesa_huevo,sandwich_bacon,ensalada,desayuno_bacon_huevo]
+  
   method recetasPosibles(ingredientesActuales) =
     todasLasRecetas.filter({ receta => receta.vaPorBuenCamino(ingredientesActuales) })
   

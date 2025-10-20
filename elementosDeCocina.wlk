@@ -4,7 +4,6 @@ import score.*
 
 class Cajon{
     var property position = game.center()
-    const tipo = 'pan'
     method image() ='cajon.png'
 
 
@@ -23,29 +22,37 @@ class Cajon{
 }
 const cajon = new Cajon (position = game.at(10,10))
 
+class Tacho{
+    var property position = game.center()
+    method image() ='tacho.png'
 
-// object estufa{
-//     var position = game.at(10,10)
-//     method image() = 'test3.jpg'
 
-// }
+    method puedeMoverA(destinox,destinoy) = destinox==self.position().x() and destinoy==self.position().y()
+    
+    method aparecerIngrediente() {
+    if (not(self.estaOcupado())) {
+      game.addVisual(pan)
+    }
+  
+    }
 
-//  method aparecer() {
-//         position = self.encontrarSillaDesocupada()
-//         cliente.fantasmasVisibles().add(self)
-//         game.addVisual(self)
+    method estaOcupado() = pan.position() == self.position()
+    
+
+}
+
+const tacho = new Tacho (position = game.at(10,5))
 
 
 
 
 class Plato {    
-    var ingredientes  = []
-    var cantidad =0 
+    const ingredientes  = []
     var property position = game.at(12, 11)
     var estaEnInventario = false 
     method estaEnInventario() = estaEnInventario
-    method estaEnInventario(Param) {
-    estaEnInventario = Param 
+    method estaEnInventario(param) {
+    estaEnInventario = param 
   } 
 
 
@@ -72,11 +79,16 @@ class Plato {
     method intentarAceptar() {
         if (sistemaDeRecetas.completita(ingredientes)){
             marcador.actualizar()
-            plato.position(12, 11)
+            self.position(12, 11)
             ingredientes.clear()
 
             //return true
         } 
+    }
+
+    method eliminarComida(){
+      ingredientes.clear()
+      self.position(12, 11)
     }
 }
 

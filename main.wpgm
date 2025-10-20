@@ -19,7 +19,7 @@ program PepitaGame {
 
 	temporizador.iniciar()
 	
-	// game.addVisualCharacter(jugador1)
+
 	game.addVisual(jugador1)
 	game.addVisual(jugador2)
 	game.addVisual(duro)	
@@ -33,11 +33,8 @@ program PepitaGame {
 	game.addVisual(huevo_cocinado)
 	game.addVisual(plato)
 	game.addVisual(marcador)
+	game.addVisual(tacho)
 
-
-
-
- 
 
 
 	jugador1.configurarTeclas() 

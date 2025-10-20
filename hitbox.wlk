@@ -14,7 +14,7 @@ const duro =new Bloque (position=game.at(16,5))
 const duro2 =new Bloque (position=game.at(17,5))
 
 object pared {
-  var obstaculos = [duro, duro2, cajon]
+  const obstaculos = [duro, duro2, cajon,tacho]
   
   method obstaculos() = obstaculos
   method todopuedeMoverA(destinox,destinoy) = obstaculos.any({obstaculo=>obstaculo.puedeMoverA(destinox,destinoy)})
@@ -29,10 +29,10 @@ class Tope {
   }
 }
 
-const topeAbajo = new Tope()
+const topeAbajo = new Tope(position=game.at(0, 1))
 
-const topeArriba = new Tope()
+const topeArriba = new Tope(position=game.at(0, 14))
 
-const topeIzq = new Tope()
+const topeIzq = new Tope(position=game.at(8, 0))
 
-const topeDer = new Tope()
+const topeDer = new Tope(position=game.at(24, 0))

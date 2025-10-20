@@ -2,7 +2,7 @@ import wollok.game.*
 import score.*
 
 object temporizador {
-    const PUNTUACION_MINIMA = 20 // Puntos necesarios para ganar
+    const PUNTUACION_MINIMA = 100 // Puntos necesarios para ganar
     
     method iniciar() {
         console.println("🎮 ===========================")
