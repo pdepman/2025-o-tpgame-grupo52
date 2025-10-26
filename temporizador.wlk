@@ -1,43 +1,77 @@
 import wollok.game.*
 import score.*
 
+object temporizadorVisual {
+    var property position = game.at(1, 14)
+    var miTiempo = "02:00"
+    
+    method text() = "⏰ " + miTiempo
+    method textColor() = "FF0000FF"
+    method fontSize() = 40
+    
+    method cambiarTiempo(nuevoTiempo) {
+        miTiempo = nuevoTiempo
+    }
+}
+
 object temporizador {
-    const PUNTUACION_MINIMA = 100 // Puntos necesarios para ganar
+    const puntuacionMinima = 100
+    var tiempoRestante = 120
+    var tiempoInicio = 0
+    var enEjecucion = true
     
     method iniciar() {
-        console.println("🎮 ===========================")
-        console.println("⏰ TEMPORIZADOR INICIADO")
-        console.println("🕑 Tiempo: 2:00 minutos") 
-        console.println("🏆 Meta: " + PUNTUACION_MINIMA + " puntos para ganar")
-        console.println("🎮 ===========================")
-        
-        // Programar mensajes de cuenta regresiva
-        self.programarMensajes()
-        
-        game.schedule(120000, {
-            self.finalizarJuego()
-        })
+        tiempoInicio = game.currentTime()
+        game.addVisual(temporizadorVisual)
+        console.println("⏰ TEMPORIZADOR INICIADO - 2 minutos")
+        self.actualizar()
     }
     
-    method programarMensajes() {
-        // Mensajes de progreso del tiempo
-        game.schedule(60000, { console.println("⏰ 1:00 - 1 minuto restante") })
-        game.schedule(90000, { console.println("⏰ 0:30 - 30 segundos restantes") })
-        game.schedule(100000, { console.println("⏰ 0:20 - 20 segundos") })
-        game.schedule(110000, { console.println("⏰ 0:10 - ¡ÚLTIMOS SEGUNDOS!") })
-        game.schedule(114000, { console.println("⏰ 0:06 - 6 segundos!") })
-        game.schedule(115000, { console.println("⏰ 0:05 - 5 segundos!") })
-        game.schedule(116000, { console.println("⏰ 0:04 - 4 segundos!") })
-        game.schedule(117000, { console.println("⏰ 0:03 - 3 segundos!") })
-        game.schedule(118000, { console.println("⏰ 0:02 - 2 segundos!") })
-        game.schedule(119000, { console.println("⏰ 0:01 - 1 segundo!") })
+    method actualizar() {
+        if (enEjecucion) {
+            var tiempoActual = game.currentTime()
+            var tiempoTranscurrido = tiempoActual - tiempoInicio
+            var segundosTranscurridos = (tiempoTranscurrido / 1000).floor()
+            
+            tiempoRestante = 120 - segundosTranscurridos
+            
+            if (tiempoRestante > 0) {
+                self.actualizarVisual()
+                game.schedule(100, { self.actualizar() })
+            } else {
+                tiempoRestante = 0
+                self.actualizarVisual()
+                self.finalizarJuego()
+            }
+        }
+    }
+    
+    method actualizarVisual() {
+        var minutos = (tiempoRestante / 60).floor()
+        var segundos = tiempoRestante % 60
+        var segundosTexto = ""
+        
+        // CORREGIDO: if con retorno en todos los flujos
+        if (segundos < 10) {
+            segundosTexto = "0" + segundos.toString()
+        } else {
+            segundosTexto = segundos.toString()
+        }
+        
+        var tiempoFormateado = minutos.toString() + ":" + segundosTexto
+        temporizadorVisual.cambiarTiempo(tiempoFormateado)
+        
+        // console.println("Tiempo: " + tiempoFormateado)
     }
     
     method finalizarJuego() {
-        var puntosFinales = marcador.puntos()
+        enEjecucion = false
+        console.println("🎯 ¡TIEMPO AGOTADO!")
         
-        // Determinar si ganó o perdió
-        if (puntosFinales >= PUNTUACION_MINIMA) {
+        var puntosFinales = marcador.puntos()
+        console.println("Puntos finales: " + puntosFinales)
+        
+        if (puntosFinales >= puntuacionMinima) {
             self.mostrarVictoria(puntosFinales)
         } else {
             self.mostrarDerrota(puntosFinales)
@@ -47,35 +81,25 @@ object temporizador {
     }
     
     method mostrarVictoria(puntos) {
-        var mensajeVictoria = object {
-            var property position = game.at(6, 6)  // Posición centrada
-            method image() = "you_win.jpg"  // Tu imagen de victoria
-        }
-        game.addVisual(mensajeVictoria)
-        
-        console.println("🎉 ===========================")
         console.println("🏆 ¡VICTORIA!")
-        console.println("⭐ Puntos alcanzados: " + puntos)
-        console.println("🎯 Meta superada: " + PUNTUACION_MINIMA + " puntos")
-        console.println("🎉 ===========================")
+        var mensaje = object {
+            var property position = game.at(6, 1)
+            method image() = "you_win.jpg"
+        }
+        game.addVisual(mensaje)
     }
     
     method mostrarDerrota(puntos) {
-        var mensajeDerrota = object {
-            var property position = game.at(6, 6)  // Misma posición centrada
-            method image() = "you_lose.jpg"  // Tu imagen de derrota
+        console.println("💀 DERROTA")
+        var mensaje = object {
+            var property position = game.at(6, 6)
+            method image() = "you_lose.jpg"
         }
-        game.addVisual(mensajeDerrota)
-        
-        console.println("💀 ===========================")
-        console.println("😞 ¡DERROTA!")
-        console.println("⭐ Puntos obtenidos: " + puntos)
-        console.println("🎯 Meta requerida: " + PUNTUACION_MINIMA + " puntos")
-        console.println("📉 Faltaron: " + (PUNTUACION_MINIMA - puntos) + " puntos")
-        console.println("💀 ===========================")
+        game.addVisual(mensaje)
     }
     
     method deshabilitarControles() {
+        console.println("Controles deshabilitados")
         keyboard.a().onPressDo({ })
         keyboard.d().onPressDo({ })
         keyboard.w().onPressDo({ })
