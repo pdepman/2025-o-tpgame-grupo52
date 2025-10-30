@@ -2,49 +2,28 @@ import comida.*
 import receta.*
 import score.*
 
-class Cajon{
+class ContenedorDeIngredientes {
     var property position = game.center()
-    method image() ='cajon.png'
-
-
-    method puedeMoverA(destinox,destinoy) = destinox==self.position().x() and destinoy==self.position().y()
-    
+    method puedeMoverA(destinox, destinoy) = destinox == self.position().x() and destinoy == self.position().y()
     method aparecerIngrediente() {
-    if (not(self.estaOcupado())) {
-      game.addVisual(pan)
+        if (not(self.estaOcupado())) {
+            game.addVisual(pan)
+        }
     }
-  
-    }
-
     method estaOcupado() = pan.position() == self.position()
-    
-
-}
-const cajon = new Cajon (position = game.at(10,10))
-
-class Tacho{
-    var property position = game.center()
-    method image() ='tacho.png'
-
-
-    method puedeMoverA(destinox,destinoy) = destinox==self.position().x() and destinoy==self.position().y()
-    
-    method aparecerIngrediente() {
-    if (not(self.estaOcupado())) {
-      game.addVisual(pan)
-    }
-  
-    }
-
-    method estaOcupado() = pan.position() == self.position()
-    
-
 }
 
-const tacho = new Tacho (position = game.at(10,5))
+class Cajon inherits ContenedorDeIngredientes {
+    method image() = 'cajon.png'
+}
 
+const cajon = new Cajon(position = game.at(10,10))
 
+class Tacho inherits ContenedorDeIngredientes {
+    method image() = 'tacho.png'
+}
 
+const tacho = new Tacho(position = game.at(10,5))
 
 class Plato {    
     const ingredientes  = []
@@ -53,21 +32,16 @@ class Plato {
     var estaEnInventario = false 
     method estaEnInventario() = estaEnInventario
     method estaEnInventario(param) {
-    estaEnInventario = param 
-  } 
+        estaEnInventario = param 
+    } 
 
-
-  method position(newPosX, newPosY){
-    position = game.at(newPosX,newPosY)  
-  }
+    method position(newPosX, newPosY){
+        position = game.at(newPosX,newPosY)  
+    }
 
     method cantidad()=ingredientes.size()
 
-
-
     method image() = "plato"+self.cantidad()+".png" 
-
- 
 
     method agregarIngrediente(unaComida) {
         if (unaComida != null) {
@@ -82,19 +56,18 @@ class Plato {
             marcador.actualizar()
             self.volver()
             ingredientes.clear()
-
-            //return true
         } 
     }
 
     method eliminarComida(){
-      ingredientes.clear()
-      self.volver()
+        ingredientes.clear()
+        self.volver()
     }
+
     method volver(){
-    position = posicionOriginal
-  }
+        position = posicionOriginal
+    }
 }
 
 const plato1 = new Plato(posicionOriginal= game.at(12, 11))
-const plato2 = new Plato(posicionOriginal =game.at(19, 11))
+const plato2 = new Plato(posicionOriginal = game.at(19, 11))
