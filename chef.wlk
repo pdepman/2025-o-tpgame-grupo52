@@ -6,7 +6,7 @@ import elementosDeCocina.*
 class Chef {
   var cambio = ""
   var sostiene = null
-  var orientacion = 1
+  var orientacion = derecha
   var position = game.origin()
   var sufijo = "Default"
   
@@ -35,18 +35,12 @@ class Chef {
       var posChefActual = self.position()
       var sentidoX = 0
       var sentidoY = 0
-      if (self.orientacion() == 1) {
-        sentidoX = 1
-      }
-      if (self.orientacion() == 2) {
-        sentidoY = -1
-      }
-      if (self.orientacion() == 3) {
-        sentidoY = 1
-      }
-      if (self.orientacion() == 4) {
-        sentidoX = -1
-      }
+
+      if (self.orientacion() == derecha) sentidoX = 1
+      if (self.orientacion() == izquierda) sentidoX = -1
+      if (self.orientacion() == arriba) sentidoY = 1
+      if (self.orientacion() == abajo) sentidoY = -1
+
       ingrediente.position(
         posChefActual.x() + sentidoX,
         posChefActual.y() + sentidoY
@@ -65,29 +59,22 @@ class Chef {
   }
   
   method intentarMover(direccion) {
-    if (orientacion == direccion.orientacionConstante(self)) {
+    if (orientacion == direccion) {
       if (direccion.puedeMover(self)) direccion.mover(self)
     }
     sufijo = direccion.sufijo()
-    orientacion = direccion.orientacionConstante(self)
+    orientacion = direccion
     self.moverComida(sostiene)
   }
   
   method ingredienteCercano() {
     var posicionAdelante = self.position()
     
-    if (orientacion == derecha.valor()) {
-      posicionAdelante = posicionAdelante.right(1)
-    }
-    if (orientacion == izquierda.valor()) {
-      posicionAdelante = posicionAdelante.left(1)
-    }
-    if (orientacion == arriba.valor()) {
-      posicionAdelante = posicionAdelante.up(1)
-    }
-    if (orientacion == abajo.valor()) {
-      posicionAdelante = posicionAdelante.down(1)
-    }
+    if (orientacion == derecha) posicionAdelante = posicionAdelante.right(1)
+    if (orientacion == izquierda) posicionAdelante = posicionAdelante.left(1)
+    if (orientacion == arriba) posicionAdelante = posicionAdelante.up(1)
+    if (orientacion == abajo) posicionAdelante = posicionAdelante.down(1)
+    
     return objetosmobibles.find({ i => i.position() == posicionAdelante })
   }
   
@@ -148,63 +135,30 @@ class Chef2 inherits Chef {
 }
 
 const jugador1 = new Chef(position = game.at(12, 3))
-
 const jugador2 = new Chef2(position = game.at(20, 3))
 
 object izquierda {
-  method valor() = 4
-  
-  method puedeMover(
-    personaje
-  ) = topeIzq.position().x() < personaje.position().x()
-  
+  method puedeMover(personaje) = topeIzq.position().x() < personaje.position().x()
   method mover(personaje) = personaje.mover(-1, 0)
-  
   method sufijo() = "Izquierda"
-  
-  method orientacionConstante(personaje) = self.valor()
 }
 
 object derecha {
-  method valor() = 1
-  
-  method puedeMover(
-    personaje
-  ) = topeDer.position().x() > personaje.position().x()
-  
+  method puedeMover(personaje) = topeDer.position().x() > personaje.position().x()
   method mover(personaje) = personaje.mover(1, 0)
-  
   method sufijo() = "Derecha"
-  
-  method orientacionConstante(personaje) = self.valor()
 }
 
 object arriba {
-  method valor() = 3
-  
-  method puedeMover(
-    personaje
-  ) = topeArriba.position().y() > personaje.position().y()
-  
+  method puedeMover(personaje) = topeArriba.position().y() > personaje.position().y()
   method mover(personaje) = personaje.mover(0, 1)
-  
   method sufijo() = "Espaldas"
-  
-  method orientacionConstante(personaje) = self.valor()
 }
 
 object abajo {
-  method valor() = 2
-  
-  method puedeMover(
-    personaje
-  ) = topeAbajo.position().y() < personaje.position().y()
-  
+  method puedeMover(personaje) = topeAbajo.position().y() < personaje.position().y()
   method mover(personaje) = personaje.mover(0, -1)
-  
   method sufijo() = "Default"
-  
-  method orientacionConstante(personaje) = self.valor()
 }
 
 const objetosmobibles = [
