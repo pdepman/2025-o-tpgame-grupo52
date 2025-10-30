@@ -2,6 +2,7 @@ import hitbox.*
 import wollok.game.*
 import comida.*
 import elementosDeCocina.*
+import spawn.*
 
 class Chef {
   var cambio = ""
@@ -51,12 +52,15 @@ class Chef {
   method hayColisionEn(destino) = destino == jugador2.position()
   
   method configurarTeclas() {
-    keyboard.a().onPressDo({ self.intentarMover(izquierda) })
-    keyboard.d().onPressDo({ self.intentarMover(derecha) })
-    keyboard.w().onPressDo({ self.intentarMover(arriba) })
-    keyboard.s().onPressDo({ self.intentarMover(abajo) })
-    keyboard.e().onPressDo({ self.tomarComida() })
-  }
+  keyboard.a().onPressDo({ self.intentarMover(izquierda) })
+  keyboard.d().onPressDo({ self.intentarMover(derecha) })
+  keyboard.w().onPressDo({ self.intentarMover(arriba) })
+  keyboard.s().onPressDo({ self.intentarMover(abajo) })
+  keyboard.e().onPressDo({ self.tomarComida() })
+  keyboard.q().onPressDo({generadorDeIngredientes.generarSiguiente()
+  })
+}
+
   
   method intentarMover(direccion) {
     if (orientacion == direccion) {
@@ -124,12 +128,15 @@ class Chef {
 
 class Chef2 inherits Chef {
   override method configurarTeclas() {
-    keyboard.left().onPressDo({ self.intentarMover(izquierda) })
-    keyboard.right().onPressDo({ self.intentarMover(derecha) })
-    keyboard.up().onPressDo({ self.intentarMover(arriba) })
-    keyboard.down().onPressDo({ self.intentarMover(abajo) })
-    keyboard.enter().onPressDo({ self.tomarComida() })
-  }
+  keyboard.left().onPressDo({ self.intentarMover(izquierda) })
+  keyboard.right().onPressDo({ self.intentarMover(derecha) })
+  keyboard.up().onPressDo({ self.intentarMover(arriba) })
+  keyboard.down().onPressDo({ self.intentarMover(abajo) })
+  keyboard.enter().onPressDo({ self.tomarComida() })
+  keyboard.shift().onPressDo({generadorDeIngredientes.generarSiguiente()
+  })
+}
+
   
   override method hayColisionEn(destino) = destino == jugador1.position()
 }
@@ -171,3 +178,4 @@ const objetosmobibles = [
 ] + platos
 
 const platos = [plato1, plato2]
+
