@@ -52,7 +52,7 @@ class Plato {
     method ingredientes() = ingredientes
 
     method intentarAceptar() {
-        if (sistemaDeRecetas.completita(ingredientes)){
+        if (sistemaDeRecetas.completita(self)){
             marcador.actualizar()
             self.volver()
             ingredientes.clear()

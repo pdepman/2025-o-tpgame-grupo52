@@ -55,14 +55,14 @@ describe "test do jogo" {
 
     test "Una receta es valida si tiene todos sus ingredientes"{
         var estaCompleta 
-        estaCompleta = hamburguesa_simple.completa(hamburguesaDePrueba.ingredientes())
-        assert.equals(true, estaCompleta)
+        estaCompleta = hamburguesa_simple.completa(hamburguesaDePrueba)
+        assert.that(estaCompleta)
     }
 
     test "Una receta es invalida si le faltan ingredientes"{
         var estaCompleta
-        estaCompleta = hamburguesa_completa.completa(hamburguesaDePrueba.ingredientes())
-        assert.equals(false, estaCompleta)
+        estaCompleta = hamburguesa_completa.completa(hamburguesaDePrueba)
+        assert.notThat(estaCompleta)
     }
 
     test "Si una receta es valida, suma puntos (una cantidad de 10)"{

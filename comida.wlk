@@ -1,5 +1,3 @@
-
-
 class Comida {
   var property position = posicionOriginal
   const property posicionOriginal 
@@ -11,8 +9,8 @@ class Comida {
 
   method estaEnInventario() = estaEnInventario
   
-  method estaEnInventario(Param) {
-    estaEnInventario = Param 
+  method estaEnInventario(param) {
+    estaEnInventario = param 
   } 
 
   method volver(){

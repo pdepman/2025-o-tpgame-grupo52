@@ -12,7 +12,7 @@ class Receta {
     
     method vaPorBuenCamino(ingredientesDisponibles)= self.contiene(ingredientesDisponibles) and self.tieneRepetidos(ingredientesDisponibles)
 
-    method completa(ingredientesDisponibles)=self.contiene(ingredientesDisponibles) and self.mismaCantidad(ingredientesDisponibles)
+    method completa(plato) = self.contiene(plato.ingredientes()) and self.mismaCantidad(plato.ingredientes())
 
 }   
 
@@ -31,8 +31,8 @@ object sistemaDeRecetas {
   method recetasPosibles(ingredientesActuales) =
     todasLasRecetas.filter({ receta => receta.vaPorBuenCamino(ingredientesActuales) })
   
-  method completita(ingredientesActuales) =
-    todasLasRecetas.any({ receta => receta.completa(ingredientesActuales) })
+  method completita(plato) =
+    todasLasRecetas.any({ receta => receta.completa(plato) })
   
 
 }
