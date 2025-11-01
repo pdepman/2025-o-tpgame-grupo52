@@ -19,6 +19,8 @@ class Chef {
     position = nuevaPosition
   }
   
+  method direccionObjeto() =  orientacion.desplazamiento()
+
   method inventarioVacio() = sostiene == null
   
   method image() = (("chef" + sufijo) + cambio) + ".png"
@@ -34,17 +36,13 @@ class Chef {
   method moverComida(ingrediente) {
     if (!self.inventarioVacio()) {
       var posChefActual = self.position()
-      var sentidoX = 0
-      var sentidoY = 0
+      var direccion
 
-      if (self.orientacion() == derecha) sentidoX = 1
-      if (self.orientacion() == izquierda) sentidoX = -1
-      if (self.orientacion() == arriba) sentidoY = 1
-      if (self.orientacion() == abajo) sentidoY = -1
+      direccion = self.direccionObjeto()
 
       ingrediente.position(
-        posChefActual.x() + sentidoX,
-        posChefActual.y() + sentidoY
+        posChefActual.x() + direccion.x(),
+        posChefActual.y() + direccion.y() 
       )
     }
   }
@@ -145,27 +143,36 @@ const jugador1 = new Chef(position = game.at(12, 3))
 const jugador2 = new Chef2(position = game.at(20, 3))
 
 object izquierda {
+  const position = game.at(-1,0)
+
   method puedeMover(personaje) = topeIzq.position().x() < personaje.position().x()
   method mover(personaje) = personaje.mover(-1, 0)
   method sufijo() = "Izquierda"
+  method desplazamiento() = position  
 }
 
 object derecha {
+  const position = game.at(1,0)
   method puedeMover(personaje) = topeDer.position().x() > personaje.position().x()
   method mover(personaje) = personaje.mover(1, 0)
   method sufijo() = "Derecha"
+  method desplazamiento() = position  
 }
 
 object arriba {
+  const position = game.at(0,1)
   method puedeMover(personaje) = topeArriba.position().y() > personaje.position().y()
   method mover(personaje) = personaje.mover(0, 1)
   method sufijo() = "Espaldas"
+  method desplazamiento() = position  
 }
 
 object abajo {
+  const position = game.at(0,-1)
   method puedeMover(personaje) = topeAbajo.position().y() < personaje.position().y()
   method mover(personaje) = personaje.mover(0, -1)
   method sufijo() = "Default"
+  method desplazamiento() = position  
 }
 
 const objetosmobibles = [
