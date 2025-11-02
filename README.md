@@ -12,6 +12,7 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 - ¡Bienvenidos a la cocina!
 
 DOS CHEFS - UN OBJETIVO
+
 Prepara tantas recetas como puedas, lo que hara que acumules puntos y ganes el juego.
 
 ## Capturas
@@ -55,7 +56,7 @@ Prepara tantas recetas como puedas, lo que hara que acumules puntos y ganes el j
 
 - Controles Chef 2:
    
-  FLECHAS para que el chef 2 pueda desplazarse
+  FLECHAS (arriba,abajo,izquierda,derecha) para que el chef 2 pueda desplazarse
 
   `ENTER` para tomar el plato o los ingredientes 
 
@@ -63,7 +64,7 @@ Prepara tantas recetas como puedas, lo que hara que acumules puntos y ganes el j
 
 Este proyecto implementa los principios fundamentales de la Programación Orientada a Objetos mediante el desarrollo de un juego de cocina. La arquitectura del sistema se estructura alrededor de clases como Chef, Comida y Receta, que encapsulan estado y comportamiento, demostrando el principio de encapsulamiento. La herencia se manifiesta en la especialización de Chef2 que extiende la clase base Chef, permitiendo polimorfismo en los controles mientras mantiene la interfaz común. 
 
-La colaboración entre objetos se evidencia en el flujo de mensajes donde instancias de Chef interactúan con Plato y SistemaDeRecetas, creando un sistema de objetos que cooperan para lograr el objetivo del juego. Este diseño no solo facilita la mantenibilidad y extensibilidad del código, sino que también sirve como caso de estudio práctico para comprender cómo los conceptos teóricos del paradigma de objetos se materializan en aplicaciones interactivas complejas, destacando la importancia del modelado orientado a objetos.
+La colaboración entre objetos se evidencia en el flujo de mensajes donde instancias de Chef interactúan con Plato y SistemaDeRecetas, creando un sistema de objetos que cooperan para lograr el objetivo del juego. Este diseño no solo facilita la mantenibilidad y extensibilidad del código, sino que también sirve como caso de estudio práctico para comprender cómo los conceptos teóricos del paradigma de objetos se materializan en aplicaciones interactivas complejas.
 
 ## Diagrama estático 
 
