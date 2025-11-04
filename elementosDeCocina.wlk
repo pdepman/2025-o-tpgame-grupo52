@@ -4,13 +4,7 @@ import score.*
 
 class ContenedorDeIngredientes {
     var property position = game.center()
-    method puedeMoverA(destinox, destinoy) = destinox == self.position().x() and destinoy == self.position().y()
-    method aparecerIngrediente() {
-        if (not(self.estaOcupado())) {
-            game.addVisual(pan)
-        }
-    }
-    method estaOcupado() = pan.position() == self.position()
+    method puedeMoverA(destino) = destino == self.position()
 }
 
 class Cajon inherits ContenedorDeIngredientes {
@@ -30,9 +24,10 @@ class Plato {
     var property position = posicionOriginal
     const property posicionOriginal 
     var estaEnInventario = false 
+    
     method estaEnInventario() = estaEnInventario
-    method estaEnInventario(param) {
-        estaEnInventario = param 
+    method estaEnInventario(parametro) {
+        estaEnInventario = parametro 
     } 
 
     method position(newPosX, newPosY){
@@ -68,6 +63,21 @@ class Plato {
         position = posicionOriginal
     }
 }
+object horno {
+  method cocinar(comida) {
+    if (comida.cocinable()) {
+      comida.nombre()+"_cocinado" 
+    }
+  }
+}
+object cocina {
+  const comidas = [plato1, plato2]
 
+  method registrarComida(unaComida) {
+    comidas.add(unaComida)
+  }
+
+  method comidas() = comidas
+}
 const plato1 = new Plato(posicionOriginal= game.at(12, 11))
 const plato2 = new Plato(posicionOriginal = game.at(19, 11))

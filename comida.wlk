@@ -1,33 +1,44 @@
+import elementosDeCocina.*
+
 class Comida {
-  var property position = posicionOriginal
-  const property posicionOriginal 
+  var property position = game.origin()
 
   const cortable 
-  const cocinable
+  const property cocinable
   const property nombre 
+
+   method initialize() {
+    cocina.registrarComida(self)
+  }
+
+
   var estaEnInventario = false 
 
   method estaEnInventario() = estaEnInventario
   
-  method estaEnInventario(param) {
-    estaEnInventario = param 
+  method estaEnInventario(parametro) {
+    estaEnInventario = parametro 
   } 
-
-  method volver(){
-    position = posicionOriginal
-  }
 
   method image() = nombre + ".png" 
 
   method position(newPosX, newPosY){
     position = game.at(newPosX,newPosY)  
   }
-  
+
+  method esMovible()= true
 }
 
-const pan = new Comida (posicionOriginal = game.at(18,11), cortable= false , cocinable=false, nombre='pan')
-const lechuga_cortada = new Comida (posicionOriginal = game.at(17,11), cortable= false , cocinable=false, nombre='lechuga_cortada')
-const tomate = new Comida (posicionOriginal = game.at(16,11), cortable= false , cocinable=false, nombre='tomate')
-const paty_cocinado = new Comida (posicionOriginal = game.at(15,11), cortable= false , cocinable=false, nombre='paty_cocinado')
-const bacon_cocinado = new Comida (posicionOriginal = game.at(14,11), cortable= false , cocinable=false, nombre='bacon_cocinado')
-const huevo_cocinado = new Comida (posicionOriginal = game.at(13,11), cortable= false , cocinable=false, nombre='huevo_cocinado')
+const pan = new Comida (cortable= false , cocinable=false, nombre='pan')
+const lechuga_cortada = new Comida (cortable= false , cocinable=false, nombre='lechuga_cortada')
+const tomate = new Comida (cortable= false , cocinable=false, nombre='tomate')
+const carne_cortada_cocinado = new Comida (cortable= false , cocinable=false, nombre='carne_cortada_cocinado')
+const puerco_cortada_cocinado = new Comida (cortable= false , cocinable=false, nombre='puerco_cortada_cocinado')
+const huevo_cocinado = new Comida ( cortable= false , cocinable=false, nombre='huevo_cocinado')
+const puerco_cortada = new Comida ( cortable= false , cocinable=true, nombre='puerco_cortada')
+const carne = new Comida (cortable= true , cocinable=false, nombre='carne')
+const huevo = new Comida (cortable= false , cocinable=true, nombre='huevo')
+const lechuga = new Comida (cortable= true , cocinable=false, nombre='lechuga')
+const carne_cortada = new Comida (cortable= false , cocinable=true, nombre='carne_cortada')
+const puerco = new Comida (cortable= true , cocinable=false, nombre='puerco')
+

@@ -6,6 +6,8 @@ import comida.*
 import elementosDeCocina.*
 import score.*
 import temporizador.*
+import spawn.*
+
 
  
 program PepitaGame {
@@ -15,7 +17,7 @@ program PepitaGame {
 	game.cellSize(32) 
 
 
-    game.boardGround("fondo_test.jpg")
+    game.boardGround("fondo_test4.png")
 
 	temporizador.iniciar()
 	
@@ -25,12 +27,12 @@ program PepitaGame {
 	game.addVisual(duro)	
 	game.addVisual(cajon)
 	game.addVisual(duro2)
-    game.addVisual(pan)
-    game.addVisual(tomate)
-	game.addVisual(lechuga_cortada)
-	game.addVisual(paty_cocinado)
-	game.addVisual(bacon_cocinado)
-	game.addVisual(huevo_cocinado)
+	game.addVisual(generadorPan)
+	game.addVisual(generadorCarne)
+	game.addVisual(generadorLechuga)
+	game.addVisual(generadorHuevo)
+	game.addVisual(generadorPuerco)
+	game.addVisual(generadorTomate)
 	game.addVisual(plato1)
 	game.addVisual(plato2)
 	game.addVisual(marcador)

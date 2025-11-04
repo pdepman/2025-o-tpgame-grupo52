@@ -1,33 +1,36 @@
 import comida.*
 import wollok.game.*
-
-object generadorDeIngredientes {
-  const todos = [pan, lechuga_cortada, tomate, paty_cocinado, bacon_cocinado, huevo_cocinado]
-  var property activos = []
+import hitbox.* 
+import chef.*
 
 
- // Genera el siguiente ingrediente faltante y lo agrega al juego
-  method generarSiguiente() {
-    var faltantes = todos.filter({ i => not activos.contains(i) })
-    if (faltantes.isEmpty().not()) {   // Si todavía quedan ingredientes por aparecer
-      var nuevo = faltantes.first()
-      if (nuevo != null) {
-        activos.add(nuevo)
-        game.addVisual(nuevo)
-        nuevo.volver()
-      }
-    }
-  }
+class Generador{
+  var property position = game.center()
+  method image() = 'cajon.png'
+  method puedeMoverA(destino) = destino == self.position()
 
-  method liberar(ingrediente) { // elimina un ingrediente del juego cuando ya no está activo
-    if (activos.contains(ingrediente)) {
-      activos.remove(ingrediente)
-      game.removeVisual(ingrediente)
-    }
-  }
+}
 
-  method limpiar() {
-    activos.forEach({ i => game.removeVisual(i) })
-    activos.clear()
+
+const generador = new Generador()
+class GeneradorComida {
+  var property position
+  const property tipoComida  
+  method image() = 'cajon.png'
+
+  method generar() {
+    const nueva = new Comida (position = position, cortable= false , cocinable=false, nombre= tipoComida )
+    game.addVisual(nueva)
   }
 }
+
+const generadorPan = new GeneradorComida(position =  game.at(18,11), tipoComida = 'pan')
+const generadorCarne =  new GeneradorComida(position = game.at(17,11), tipoComida = 'carne')
+const generadorLechuga = new GeneradorComida(position = game.at(16,11), tipoComida = 'lechuga')
+const generadorHuevo = new GeneradorComida(position = game.at(15,11), tipoComida = 'huevo')
+const generadorPuerco = new GeneradorComida(position = game.at(14,11), tipoComida = 'puerco')
+const generadorTomate = new GeneradorComida(position = game.at(13,11), tipoComida = 'tomate')
+
+
+const generadores = [
+ generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate]
