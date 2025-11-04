@@ -17,7 +17,9 @@ Prepara tantas recetas como puedas, lo que hara que acumules puntos y ganes el j
 
 ## Capturas
 
-- Completar
+![capturaJuego](./assets/capturaGame.jpg)
+
+![capturaGameOver](./assets/capturaGameOver.jpg)
 
 ## Reglas de Juego / Instrucciones
 - Objetivo: 
@@ -68,7 +70,7 @@ La colaboración entre objetos se evidencia en el flujo de mensajes donde instan
 
 ## Diagrama estático 
 
-https://lucid.app/lucidchart/424da17c-27be-4838-b062-df629ca750aa/edit?beaconFlowId=ACD261398321042D&invitationId=inv_b82ed8df-d7bc-4d47-b5fe-3e8b1a8ce1d9&page=0_0#
+https://lucid.app/lucidchart/424da17c-27be-4838-b062-df629ca750aa/view
 
 
 
