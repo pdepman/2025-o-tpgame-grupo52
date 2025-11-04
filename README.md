@@ -17,7 +17,9 @@ Prepara tantas recetas como puedas, lo que hara que acumules puntos y ganes el j
 
 ## Capturas
 
-- Completar
+![capturaJuego](./assets/capturaGame.jpg)
+
+![capturaGameOver](./assets/capturaGameOver.jpg)
 
 ## Reglas de Juego / Instrucciones
 - Objetivo: 
@@ -62,13 +64,13 @@ Prepara tantas recetas como puedas, lo que hara que acumules puntos y ganes el j
 
 ## Explicaciones teóricas y diagramas
 
-Este proyecto implementa los principios fundamentales de la Programación Orientada a Objetos mediante el desarrollo de un juego de cocina. La arquitectura del sistema se estructura alrededor de clases como Chef, Comida y Receta, que encapsulan estado y comportamiento, demostrando el principio de encapsulamiento. La herencia se manifiesta en la especialización de Chef2 que extiende la clase base Chef, permitiendo polimorfismo en los controles mientras mantiene la interfaz común. 
+Este proyecto implementa los principios fundamentales de la Programación Orientada a Objetos mediante el desarrollo de un juego de cocina. La arquitectura del sistema se estructura alrededor de clases como Chef, Comida y Receta, que implementan encapsulación, protegiendo sus atributos internos y exponiendo solo la funcionalidad necesaria. La herencia se implementa mediante la clase Chef2 que extiende Chef, sobrescribiendo el método configurarTeclas() para asignar controles diferentes (teclas de flecha) mientras mantiene la misma interfaz de movimiento. Adicionalmente, el sistema emplea polimorfismo a través de objetos dirección (izquierda, derecha, arriba, abajo) que responden al mismo mensaje mover() con comportamientos específicos para cada orientación. 
 
 La colaboración entre objetos se evidencia en el flujo de mensajes donde instancias de Chef interactúan con Plato y SistemaDeRecetas, creando un sistema de objetos que cooperan para lograr el objetivo del juego. Este diseño no solo facilita la mantenibilidad y extensibilidad del código, sino que también sirve como caso de estudio práctico para comprender cómo los conceptos teóricos del paradigma de objetos se materializan en aplicaciones interactivas complejas.
 
 ## Diagrama estático 
 
-https://lucid.app/lucidchart/424da17c-27be-4838-b062-df629ca750aa/edit?beaconFlowId=ACD261398321042D&invitationId=inv_b82ed8df-d7bc-4d47-b5fe-3e8b1a8ce1d9&page=0_0#
+https://lucid.app/lucidchart/424da17c-27be-4838-b062-df629ca750aa/view
 
 
 
