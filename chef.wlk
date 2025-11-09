@@ -59,16 +59,26 @@ class Chef {
   )
 }
 
-method teclas(teclaIzquierda, teclaDerecha, teclaArriba, teclaAbajo, teclaTomar,teclaInteractuar) {
+method teclas(teclaIzquierda, teclaDerecha, teclaArriba, teclaAbajo, teclaTomar, teclaInteractuar) {
   teclaIzquierda.onPressDo({ self.intentarMover(izquierda) })
   teclaDerecha.onPressDo({ self.intentarMover(derecha) })
   teclaArriba.onPressDo({ self.intentarMover(arriba) })
   teclaAbajo.onPressDo({ self.intentarMover(abajo) })
   teclaTomar.onPressDo({ self.tomarComida() })
-  teclaInteractuar.onPressDo({ self.intentarGenerar()})
+  teclaInteractuar.onPressDo({ self.intentarInteraccion() })
 }
-  
-  method intentarMover(direccion) {
+const objetosInteractivos=[generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate,horno,tabla,tacho]
+
+method intentarInteraccion() {
+  const posAdelante = self.posicionAdelante()
+  const objetoCercano = objetosInteractivos.find({ o => o.position() == posAdelante })
+
+  if (objetoCercano != null) {
+    objetoCercano.interactuarCon(self)
+  }
+}
+
+method intentarMover(direccion) {
     if (orientacion == direccion) {
       if (direccion.puedeMover(self)) 
       direccion.mover(self)
@@ -112,39 +122,48 @@ method posicionAdelante() {
     }
   }
   
-  method tomarComida() {
-    if (self.inventarioVacio()) {
-      const ingredienteCercano = self.ingredienteCercano()
-      if (ingredienteCercano != null) {
-        ingredienteCercano.estaEnInventario(true)
-        self.llevar(ingredienteCercano)
-        cambio = "_agarro"
+method tomarComida() {
+  if (self.inventarioVacio()) {
+    const ingredienteCercano = self.ingredienteCercano()
+    if (ingredienteCercano != null and not (ingredienteCercano.ocupado())) {
+      ingredienteCercano.estaEnInventario(true)
+      ingredienteCercano.ocupado(true)
+      self.llevar(ingredienteCercano)
+      cambio = "_agarro"
+    }
+  } else { 
+    const ingrediente = sostiene
+
+    if (sostiene == self.ingredienteCercano()) {
+
+      const lugarOcupado = cocina.comidas().any({ i => i.position() == ingrediente.position() and i != ingrediente })
+
+      if (not lugarOcupado) {
+        ingrediente.ocupado(false)
+        self.moverComida(ingrediente)
+        self.quitar(ingrediente)
+        cambio = ""
       }
-    } else {
-      const ingrediente = sostiene
+    }
+
+    const platoDestino = platos.find({ p => p.position() == ingrediente.position() })
+    if ((platoDestino != null) and (ingrediente != platoDestino)) {
+      platoDestino.agregarIngrediente(ingrediente)
+      ingrediente.ocupado(false)
       self.moverComida(ingrediente)
       self.quitar(ingrediente)
       cambio = ""
-      
-      const platoDestino = platos.find(
-        { p => p.position() == ingrediente.position() }
-      )
-      
-      if ((platoDestino != null) and (ingrediente != platoDestino)) {
-        platoDestino.agregarIngrediente(ingrediente)
-        game.removeVisual(ingrediente)
-        ingrediente.volver()
-        game.addVisual(ingrediente)
-      }
-      platos.forEach(
-        { p =>
-          if (p.position() == cajon.position()) p.intentarAceptar()
-          if (p.position() == tacho.position()) p.eliminarComida()
-        }
-      )
+      game.removeVisual(ingrediente)
+      ingrediente.volver()
+      game.addVisual(ingrediente)
     }
+
+    platos.forEach({ p =>
+      if (p.position() == cajon.position()) p.intentarAceptar()
+      if (p.position() == tacho.position()) p.eliminarComida()
+    })
   }
-}
+}}
 
 class Chef2 inherits Chef {
 

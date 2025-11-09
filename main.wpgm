@@ -9,7 +9,7 @@ import temporizador.*
 import spawn.*
 
 
- 
+   
 program PepitaGame {
 	game.title("Pepita")
 	game.height(16)
@@ -24,8 +24,12 @@ program PepitaGame {
 
 	game.addVisual(jugador1)
 	game.addVisual(jugador2)
+	game.addVisual(horno)
+	game.addVisual(tabla)
 	game.addVisual(duro)	
 	game.addVisual(cajon)
+	game.addVisual(tomate)	
+	game.addVisual(lechuga)	
 	game.addVisual(duro2)
 	game.addVisual(generadorPan)
 	game.addVisual(generadorCarne)
@@ -33,10 +37,12 @@ program PepitaGame {
 	game.addVisual(generadorHuevo)
 	game.addVisual(generadorPuerco)
 	game.addVisual(generadorTomate)
+	game.addVisual(puerco_cortada1)
 	game.addVisual(plato1)
 	game.addVisual(plato2)
 	game.addVisual(marcador)
 	game.addVisual(tacho)
+		
 
 
 

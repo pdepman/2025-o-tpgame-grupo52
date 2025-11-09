@@ -17,6 +17,11 @@ const duro2 =new Bloque (position=game.at(17,5))
 
 object pared {
   const obstaculos = [duro, duro2, cajon,tacho]
+
+   method registrarBloque(unaComida) {
+    obstaculos.add(unaComida)
+  }
+
   
   method obstaculos() = obstaculos
   method todopuedeMoverA(destino) = obstaculos.any({obstaculo=>obstaculo.puedeMoverA(destino)})
