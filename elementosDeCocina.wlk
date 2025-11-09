@@ -17,16 +17,6 @@ class Cajon inherits ContenedorDeIngredientes{
 
   method image() = "cajon.png"
 
-  method interactuarCon(chef) {
-    const platoEncima = platos.find({ p => p.position() == self.position() })
-
-    if (platoEncima != null and sistemaDeRecetas.completita(platoEncima)) {
-      platoEncima.intentarAceptar() 
-    }
-    
-       
-    
-  }
 }
 
 const cajon = new Cajon(position = game.at(10,10))

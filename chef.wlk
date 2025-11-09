@@ -67,7 +67,7 @@ method teclas(teclaIzquierda, teclaDerecha, teclaArriba, teclaAbajo, teclaTomar,
   teclaTomar.onPressDo({ self.tomarComida() })
   teclaInteractuar.onPressDo({ self.intentarInteraccion() })
 }
-const objetosInteractivos=[generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate,horno,tabla,tacho]
+const objetosInteractivos=[generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate,horno,tabla]
 
 method intentarInteraccion() {
   const posAdelante = self.posicionAdelante()
