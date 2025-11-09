@@ -15,7 +15,7 @@ class Receta {
     
     method todoComible(ingredientesDisponibles)= ingredientesDisponibles.all{ingrediente=>ingrediente.ingredienteListo()}
 
-    method completa(plato) = self.contiene(plato.ingredientes()) and self.mismaCantidad(plato.ingredientes())
+    method completa(plato) = self.contiene(plato.ingredientes()) and self.mismaCantidad(plato.ingredientes())and self.todoComible(plato.ingredientes())
 
 
 

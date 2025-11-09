@@ -8,6 +8,12 @@ class Comida {
   var faltaCocinar =true
   var faltaCortar =true
 
+  method faltaCocinar(param) {faltaCocinar=param}
+
+  method faltaCortar(param) {faltaCortar=param}
+    
+  
+
 
   var ocupado = false 
   const  property nombre 

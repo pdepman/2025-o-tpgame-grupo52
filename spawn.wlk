@@ -27,7 +27,7 @@ const generadorCarne =  new GeneradorComida(position = game.at(17,11), tipoComid
 const generadorLechuga = new GeneradorComida(position = game.at(16,11),fCocinar= false , tipoComida = 'lechuga')
 const generadorHuevo = new GeneradorComida(position = game.at(15,11), fCortar=false, tipoComida = 'huevo')
 const generadorPuerco = new GeneradorComida(position = game.at(14,11), tipoComida = 'puerco')
-const generadorTomate = new GeneradorComida(position = game.at(13,11), tipoComida = 'tomate')
+const generadorTomate = new GeneradorComida(position = game.at(13,11), fCocinar= false , fCortar=false,tipoComida = 'tomate')
 
 
 const generadores = [
