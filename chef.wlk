@@ -9,16 +9,12 @@ class Chef {
   const nombre 
   var sostiene = null
   var orientacion = derecha
-  var position = game.origin()
+  var property position = game.origin()
   var sufijo = "Default"
-  
-  method position() = position
-  
+
+
   method orientacion() = orientacion
   
-  method position(nuevaPosition) {
-    position = nuevaPosition
-  }
   
   method direccionObjeto() =  orientacion.desplazamiento()
 
@@ -46,28 +42,9 @@ class Chef {
     }
   }
   
-  method hayColisionEn(destino) = destino == jugador2.position()
+  method hayColisionEn(destino) = chefs.any({chef=>chef.position()==destino})
+
   
-
- method configurarTeclas() {
-  self.teclas(
-    keyboard.a(), 
-    keyboard.d(), 
-    keyboard.w(), 
-    keyboard.s(), 
-    keyboard.e(),
-    keyboard.q()
-  )
-}
-
-method teclas(teclaIzquierda, teclaDerecha, teclaArriba, teclaAbajo, teclaTomar, teclaInteractuar) {
-  teclaIzquierda.onPressDo({ self.intentarMover(izquierda) })
-  teclaDerecha.onPressDo({ self.intentarMover(derecha) })
-  teclaArriba.onPressDo({ self.intentarMover(arriba) })
-  teclaAbajo.onPressDo({ self.intentarMover(abajo) })
-  teclaTomar.onPressDo({ self.tomarComida() })
-  teclaInteractuar.onPressDo({ self.intentarInteraccion() })
-}
 const objetosInteractivos=[generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate,horno,tabla]
 
 method intentarInteraccion() {
@@ -166,25 +143,10 @@ method tomarComida() {
   }
 }}
 
-class Chef2 inherits Chef {
 
-override method configurarTeclas() {
-  self.teclas(
-    keyboard.left(), 
-    keyboard.right(), 
-    keyboard.up(), 
-    keyboard.down(), 
-    keyboard.enter(),
-    keyboard.shift()
-    
-  )
-}
-
-override method hayColisionEn(destino) = destino == jugador1.position()
-}
 
 const jugador1 = new Chef(nombre = 'chefOriginal' ,position = game.at(12, 3))
-const jugador2 = new Chef2(nombre = 'chefBarba' ,position = game.at(20, 3))
+const jugador2 = new Chef(nombre = 'chefBarba' ,position = game.at(18, 3))
 
 object izquierda {
   const position = game.at(-1,0)

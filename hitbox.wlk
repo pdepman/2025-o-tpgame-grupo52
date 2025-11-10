@@ -1,8 +1,9 @@
 import elementosDeCocina.*
 import comida.*
 import spawn.*
+import chef.*
 
-
+const chefs=[jugador1,jugador2]
 
 class Bloque {
   var property position = game.at(5, 5)
