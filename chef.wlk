@@ -6,6 +6,7 @@ import spawn.*
 
 class Chef {
   var cambio = ""
+  const nombre 
   var sostiene = null
   var orientacion = derecha
   var position = game.origin()
@@ -23,7 +24,7 @@ class Chef {
 
   method inventarioVacio() = sostiene == null
   
-  method image() = (("chef" + sufijo) + cambio) + ".png"
+  method image() = ((nombre + sufijo) + cambio) + ".png"
   
   method mover(desplazamiento) {
     var nueva = game.at(position.x() + desplazamiento.x(), position.y() + desplazamiento.y())
@@ -182,8 +183,8 @@ override method configurarTeclas() {
 override method hayColisionEn(destino) = destino == jugador1.position()
 }
 
-const jugador1 = new Chef(position = game.at(12, 3))
-const jugador2 = new Chef2(position = game.at(20, 3))
+const jugador1 = new Chef(nombre = 'chefOriginal' ,position = game.at(12, 3))
+const jugador2 = new Chef2(nombre = 'chefBarba' ,position = game.at(20, 3))
 
 object izquierda {
   const position = game.at(-1,0)

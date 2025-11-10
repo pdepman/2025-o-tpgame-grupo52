@@ -13,8 +13,8 @@ import spawn.*
 program PepitaGame {
 	game.title("Pepita")
 	game.height(16)
-	game.width(32)
-	game.cellSize(32) 
+	game.width(24)
+	game.cellSize(40) 
 
 
     game.boardGround("fondo_test4.png")
