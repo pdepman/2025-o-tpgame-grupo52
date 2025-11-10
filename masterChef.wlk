@@ -5,7 +5,7 @@ import elementosDeCocina.*
 import score.*
 import temporizador.*
 import spawn.*
-import teclado.configTeclas
+import teclasYposiciones.*
 
 object masterChefGame{
     method iniciar (){

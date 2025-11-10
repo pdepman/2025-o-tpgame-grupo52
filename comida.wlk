@@ -12,8 +12,6 @@ class Comida {
 
   method faltaCortar(param) {faltaCortar=param}
     
-  
-
 
   var ocupado = false 
   const  property nombre 

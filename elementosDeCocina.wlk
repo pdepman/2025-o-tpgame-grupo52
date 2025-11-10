@@ -2,6 +2,8 @@ import comida.*
 import receta.*
 import score.*
 import chef.*
+import spawn.*
+
 
 
 class ContenedorDeIngredientes {
@@ -9,10 +11,6 @@ class ContenedorDeIngredientes {
     method puedeMoverA(destino) = destino == self.position()
 }
 
-// class Cajon inherits ContenedorDeIngredientes {
-//     method image() = 'cajon.png'
-
-// }
 class Cajon inherits ContenedorDeIngredientes{
 
   method image() = "cajon.png"
@@ -23,10 +21,6 @@ const cajon = new Cajon(position = game.at(10,10))
 
 class Tacho inherits ContenedorDeIngredientes {
     method image() = 'tacho.png'
-    method interactuarCon(chef) {
-    self.borrar()
-  }
-  method borrar(){}
 }
 
 const tacho = new Tacho(position = game.at(10,5))
@@ -145,5 +139,7 @@ const plato1 = new Plato(posicionOriginal= game.at(12, 11))
 const plato2 = new Plato(posicionOriginal = game.at(19, 11))
 
 
+const objetosInteractivos=[generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate,horno,tabla]
 
 
+const platos = [plato1, plato2]

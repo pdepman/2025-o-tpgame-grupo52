@@ -1,4 +1,5 @@
 import chef.*
+import hitbox.*
 
 object configTeclas {
 
@@ -68,4 +69,59 @@ object tecladoJuego {
 //   method shift() {}
 // }  method hayColisionEn(destino) = destino == jugador2.position()
   
+object izquierda {
+  const position = game.at(-1, 0)
+  
+  method puedeMover(
+    personaje
+  ) = topeIzq.position().x() < personaje.position().x()
+  
+  method mover(personaje) = personaje.mover(self.desplazamiento())
+  
+  method sufijo() = "Izquierda"
+  
+  method desplazamiento() = position
+}
+
+object derecha {
+  const position = game.at(1, 0)
+  
+  method puedeMover(
+    personaje
+  ) = topeDer.position().x() > personaje.position().x()
+  
+  method mover(personaje) = personaje.mover(self.desplazamiento())
+  
+  method sufijo() = "Derecha"
+  
+  method desplazamiento() = position
+}
+
+object arriba {
+  const position = game.at(0, 1)
+  
+  method puedeMover(
+    personaje
+  ) = topeArriba.position().y() > personaje.position().y()
+  
+  method mover(personaje) = personaje.mover(self.desplazamiento())
+  
+  method sufijo() = "Espaldas"
+  
+  method desplazamiento() = position
+}
+
+object abajo {
+  const position = game.at(0, -1)
+  
+  method puedeMover(
+    personaje
+  ) = topeAbajo.position().y() < personaje.position().y()
+  
+  method mover(personaje) = personaje.mover(self.desplazamiento())
+  
+  method sufijo() = "Default"
+  
+  method desplazamiento() = position
+}
 
