@@ -3,6 +3,7 @@ import wollok.game.*
 import elementosDeCocina.*
 import spawn.*
 import teclasYposiciones.*
+import score.*
 
 class Chef {
   var cambio = ""
@@ -11,12 +12,17 @@ class Chef {
   var property orientacion = derecha
   var property position = game.origin()
   var sufijo = "Default"
+  var contador 
   
   method direccionObjeto() = orientacion.desplazamiento()
   
   method inventarioVacio() = sostiene == null
   
   method image() = ((nombre + sufijo) + cambio) + ".png"
+
+   method actualizar() {
+        contador.incrementar(10)
+    }
   
   method mover(desplazamiento) {
     var nueva = game.at(
@@ -164,21 +170,20 @@ class Chef {
       self.quitar(ingrediente)
       cambio = ""
       game.removeVisual(ingrediente)
-      ingrediente.volver()
-      game.addVisual(ingrediente)
+      ingrediente.moverAlaEsquina()
     }
   }
   
   method verificarCajonYTacho() {
     platos.forEach(
       { p =>
-        if (p.position() == cajon.position()) p.intentarAceptar()
-        if (p.position() == tacho.position()) p.eliminarComida()
+        if (p.position() == cajon1.position()) p.intentarAceptar(self)
+        if (p.position() == tacho1.position()) p.eliminarComida()
       }
     )
   }
 }
 
-const jugador1 = new Chef(nombre = "chefOriginal", position = game.at(12, 3))
+const jugador1 = new Chef(nombre = "chefOriginal", position = game.at(8, 3),contador = marcador1)
 
-const jugador2 = new Chef(nombre = "chefBarba", position = game.at(18, 3))
+const jugador2 = new Chef(nombre = "chefBarba", position = game.at(15, 3),contador = marcador2)

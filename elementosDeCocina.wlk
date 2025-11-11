@@ -3,27 +3,35 @@ import receta.*
 import score.*
 import chef.*
 import spawn.*
+import hitbox.*
 
 
 
 class ContenedorDeIngredientes {
     var property position = game.center()
     method puedeMoverA(destino) = destino == self.position()
+
+    method initialize() {
+    pared.registrarbloque(self)
+  }
 }
 
 class Cajon inherits ContenedorDeIngredientes{
 
-  method image() = "cajon.png"
-
+ 
 }
 
-const cajon = new Cajon(position = game.at(10,10))
+const cajon1 = new Cajon(position = game.at(11,11))
+const cajon2 = new Cajon(position = game.at(12,11))
+
 
 class Tacho inherits ContenedorDeIngredientes {
     method image() = 'tacho.png'
 }
 
-const tacho = new Tacho(position = game.at(10,5))
+const tacho1 = new Tacho(position = game.at(5 ,2))
+
+const tacho2 = new Tacho(position = game.at(18,2))
 
 class Plato {    
     const ingredientes  = []
@@ -56,9 +64,9 @@ class Plato {
 
     method ingredientes() = ingredientes
 
-    method intentarAceptar() {
+    method intentarAceptar(chef) {
         if (sistemaDeRecetas.completita(self)){
-            marcador.actualizar()
+           chef.actualizar()
             self.volver()
             ingredientes.clear()
         } 
@@ -123,9 +131,15 @@ class Tabla {
     }
   }
 }
-const tabla =new Tabla(position = game.at(12,9))
+const tabla1 =new Tabla(position = game.at(4,5))
+const tabla2 =new Tabla(position = game.at(4,4))
+const tabla3 =new Tabla(position = game.at(19,4))
+const tabla4 =new Tabla(position = game.at(19,5))
 
-const horno = new Horno()
+const horno1 = new Horno(position = game.at(9,11))
+const horno2 = new Horno(position = game.at(7,11))
+const horno3 = new Horno(position = game.at(14,11))
+const horno4 = new Horno(position = game.at(16,11))
 object cocina {
   const comidas = [plato1, plato2]
 
@@ -139,7 +153,7 @@ const plato1 = new Plato(posicionOriginal= game.at(12, 11))
 const plato2 = new Plato(posicionOriginal = game.at(19, 11))
 
 
-const objetosInteractivos=[generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate,horno,tabla]
+const objetosInteractivos=[generadorPan,generadorCarne,generadorLechuga,generadorHuevo,generadorPuerco,generadorTomate,horno1,horno2,horno3,horno4,tabla1,tabla2,tabla3,tabla4]
 
 
 const platos = [plato1, plato2]

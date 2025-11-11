@@ -15,31 +15,35 @@ object masterChefGame{
 	game.cellSize(40) 
 
 
-    game.boardGround("fondo_test4.png")
+    game.boardGround("fondo_test5.png")
 
 	temporizador.iniciar()
 	
 
 	game.addVisual(jugador1)
 	game.addVisual(jugador2)
-	game.addVisual(horno)
-	game.addVisual(tabla)
-	game.addVisual(duro)	
-	game.addVisual(cajon)
-	game.addVisual(tomate)	
-	game.addVisual(lechuga)	
-	game.addVisual(duro2)
+	game.addVisual(cajon1)
+	game.addVisual(cajon2)
+ 
 	game.addVisual(generadorPan)
 	game.addVisual(generadorCarne)
 	game.addVisual(generadorLechuga)
 	game.addVisual(generadorHuevo)
 	game.addVisual(generadorPuerco)
 	game.addVisual(generadorTomate)
-	game.addVisual(puerco_cortada1)
+
 	game.addVisual(plato1)
 	game.addVisual(plato2)
-	game.addVisual(marcador)
-	game.addVisual(tacho)
+	game.addVisual(tacho1)
+	game.addVisual(tacho2)
+	game.addVisual(tabla1)
+	game.addVisual(tabla2)
+	game.addVisual(tabla3)
+	game.addVisual(tabla4)
+	game.addVisual(marcador1)
+	game.addVisual(marcador2)
+
+
 		
     configTeclas.iniciar()
     }

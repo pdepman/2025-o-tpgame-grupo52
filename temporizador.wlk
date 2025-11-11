@@ -15,7 +15,6 @@ object temporizadorVisual {
 }
 
 object temporizador {
-    const puntuacionMinima = 100
     var tiempoRestante = 120
     var tiempoInicio = 0
     var enEjecucion = true
@@ -68,20 +67,29 @@ object temporizador {
         enEjecucion = false
         console.println("🎯 ¡TIEMPO AGOTADO!")
         
-        var puntosFinales = marcador.puntos()
-        console.println("Puntos finales: " + puntosFinales)
+       
         
-        if (puntosFinales >= puntuacionMinima) {
-            self.mostrarVictoria(puntosFinales)
-        } else {
-            self.mostrarDerrota(puntosFinales)
+        if (marcador1.puntos() > marcador2.puntos()) {
+            self.mostrarVictoria1()
+        } if (marcador1.puntos() < marcador2.puntos()){
+           self.mostrarVictoria2() 
+           }else {
+            self.mostrarDerrota()
         }
         
         self.deshabilitarControles()
     }
     
-    method mostrarVictoria(puntos) {
-        console.println("🏆 ¡VICTORIA!")
+    method mostrarVictoria1() {
+        console.println("🏆 ¡VICTORIA a chef 1 !")
+        var mensaje = object {
+            var property position = game.at(6, 1)
+            method image() = "you_win.jpg"
+        }
+        game.addVisual(mensaje)
+    }
+    method mostrarVictoria2() {
+        console.println("🏆 ¡VICTORIA a chef 2 !")
         var mensaje = object {
             var property position = game.at(6, 1)
             method image() = "you_win.jpg"
@@ -89,8 +97,8 @@ object temporizador {
         game.addVisual(mensaje)
     }
     
-    method mostrarDerrota(puntos) {
-        console.println("💀 DERROTA")
+    method mostrarDerrota() {
+        console.println("Empate")
         var mensaje = object {
             var property position = game.at(6, 6)
             method image() = "you_lose.jpg"

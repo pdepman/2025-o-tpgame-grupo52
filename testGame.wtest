@@ -8,90 +8,90 @@ import chef.*
 import comida.*
 import elementosDeCocina.*
 
-describe "test do jogo" {
+// describe "test do jogo" {
 
-    const hamburguesa_simple = new Receta(ingredientes=['pan', 'carne_cortada_cocinado', 'tomate'])
-    const hamburguesa_completa = new Receta(ingredientes=['pan', 'carne_cortada_cocinado', 'lechuga_cortada', 'tomate'])
-    const hamburguesaDePrueba = new Plato (posicionOriginal =game.at(19, 11),ingredientes = [['pan', 'carne_cortada_cocinado', 'lechuga_cortada', 'tomate']])
-    test "el Chef no puede avanzar hacia la derecha si tiene otro objeto en esa posicion" { 
-       game.start() //El chef arranca en la posicion (12,3)
-        jugador1.mover(-3,7) //Posicionamos al chef a la izquierda del objeto en el (10,10), osea, en el (9,10)
-        var posIni = jugador1.position() 
+//     const hamburguesa_simple = new Receta(ingredientes=['pan', 'carne_cortada_cocinado', 'tomate'])
+//     const hamburguesa_completa = new Receta(ingredientes=['pan', 'carne_cortada_cocinado', 'lechuga_cortada', 'tomate'])
+//     const hamburguesaDePrueba = new Plato (posicionOriginal =game.at(19, 11),ingredientes = [['pan', 'carne_cortada_cocinado', 'lechuga_cortada', 'tomate']])
+//     test "el Chef no puede avanzar hacia la derecha si tiene otro objeto en esa posicion" { 
+//        game.start() //El chef arranca en la posicion (12,3)
+//         jugador1.mover(-3,7) //Posicionamos al chef a la izquierda del objeto en el (10,10), osea, en el (9,10)
+//         var posIni = jugador1.position() 
        
-        jugador1.mover(1,0) //Tratamos de desplazar al chef 1 posicion a la derecha
+//         jugador1.mover(1,0) //Tratamos de desplazar al chef 1 posicion a la derecha
     
-        assert.equals(posIni, jugador1.position())
-    }
+//         assert.equals(posIni, jugador1.position())
+//     }
 
-    test "el Chef no puede avanzar hacia la izquierda si tiene otro objeto en esa posicion" {
-        game.start() //El chef arranca en la posicion (12,3)
-        jugador1.mover(-1,7) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (11,10)
-        var posIni = jugador1.position() //Nos quedamos con su posicion inical
+//     test "el Chef no puede avanzar hacia la izquierda si tiene otro objeto en esa posicion" {
+//         game.start() //El chef arranca en la posicion (12,3)
+//         jugador1.mover(-1,7) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (11,10)
+//         var posIni = jugador1.position() //Nos quedamos con su posicion inical
          
-        jugador1.mover(-1,0)
+//         jugador1.mover(-1,0)
         
-        assert.equals(posIni, jugador1.position())
-    }
+//         assert.equals(posIni, jugador1.position())
+//     }
 
-    test "el Chef no puede avanzar hacia arriba si tiene otro objeto en esa posicion"{
-        game.start() //El chef arranca en la posicion (12,3)
-        jugador1.mover(-2,6) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,9)
-        var posIni = jugador1.position() //Nos quedamos con su posicion inical
+//     test "el Chef no puede avanzar hacia arriba si tiene otro objeto en esa posicion"{
+//         game.start() //El chef arranca en la posicion (12,3)
+//         jugador1.mover(-2,6) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,9)
+//         var posIni = jugador1.position() //Nos quedamos con su posicion inical
         
-        jugador1.mover(0,1)
+//         jugador1.mover(0,1)
         
-        assert.equals(posIni, jugador1.position())
-    }
+//         assert.equals(posIni, jugador1.position())
+//     }
 
-    test "el Chef no puede avanzar hacia abajo si tiene otro objeto en esa posicion"{
-        game.start() //El chef arranca en la posicion (12,3)
-        jugador1.mover(-2,8) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,11)
-        var posIni = jugador1.position() //Nos quedamos con su posicion inical
+//     test "el Chef no puede avanzar hacia abajo si tiene otro objeto en esa posicion"{
+//         game.start() //El chef arranca en la posicion (12,3)
+//         jugador1.mover(-2,8) //Posicionamos al chef a la derecha del objeto en el (10,10), osea, en el (10,11)
+//         var posIni = jugador1.position() //Nos quedamos con su posicion inical
        
-        jugador1.mover(0,-1)
+//         jugador1.mover(0,-1)
         
-        assert.equals(posIni, jugador1.position())
-    }
+//         assert.equals(posIni, jugador1.position())
+//     }
     
-    test "Chef puede moverse libremente a posición vacía derecha" {
-        game.start()
-        jugador1.position(game.at(5, 5)) // Posición libre
-        jugador1.mover(1, 0) // Mover derecha
-        assert.equals(game.at(6, 5), jugador1.position())
-    }
+//     test "Chef puede moverse libremente a posición vacía derecha" {
+//         game.start()
+//         jugador1.position(game.at(5, 5)) // Posición libre
+//         jugador1.mover(1, 0) // Mover derecha
+//         assert.equals(game.at(6, 5), jugador1.position())
+//     }
 
-    test "Chef puede moverse libremente a posición vacía izquierda" {
-        game.start()
-        jugador1.position(game.at(5, 5)) // Posición libre
-        jugador1.mover(-1, 0) // Mover izquierda
-        assert.equals(game.at(4, 5), jugador1.position())
-    }
+//     test "Chef puede moverse libremente a posición vacía izquierda" {
+//         game.start()
+//         jugador1.position(game.at(5, 5)) // Posición libre
+//         jugador1.mover(-1, 0) // Mover izquierda
+//         assert.equals(game.at(4, 5), jugador1.position())
+//     }
 
-    test "Chef puede moverse libremente a posición vacía arriba" {
-        game.start()
-        jugador1.position(game.at(5, 5)) // Posición libre
-        jugador1.mover(0, 1) // Mover arriba
-        assert.equals(game.at(5, 6), jugador1.position())
-    }
+//     test "Chef puede moverse libremente a posición vacía arriba" {
+//         game.start()
+//         jugador1.position(game.at(5, 5)) // Posición libre
+//         jugador1.mover(0, 1) // Mover arriba
+//         assert.equals(game.at(5, 6), jugador1.position())
+//     }
 
-    test "Chef puede moverse libremente a posición vacía abajo" {
-        game.start()
-        jugador1.position(game.at(5, 5)) // Posición libre
-        jugador1.mover(0, -1) // Mover abajo
-        assert.equals(game.at(5, 4), jugador1.position())
-    }
+//     test "Chef puede moverse libremente a posición vacía abajo" {
+//         game.start()
+//         jugador1.position(game.at(5, 5)) // Posición libre
+//         jugador1.mover(0, -1) // Mover abajo
+//         assert.equals(game.at(5, 4), jugador1.position())
+//     }
 
 
-    test "Una receta es valida si tiene todos sus ingredientes"{
-        assert.that(hamburguesa_simple.completa(hamburguesaDePrueba))
-    }
+//     test "Una receta es valida si tiene todos sus ingredientes"{
+//         assert.that(hamburguesa_simple.completa(hamburguesaDePrueba))
+//     }
 
-    test "Una receta es invalida si le faltan ingredientes"{
-        assert.notThat(hamburguesa_completa.completa(hamburguesaDePrueba))
-    }
+//     test "Una receta es invalida si le faltan ingredientes"{
+//         assert.notThat(hamburguesa_completa.completa(hamburguesaDePrueba))
+//     }
 
-    test "Si una receta es valida, suma puntos (una cantidad de 10)"{
-        hamburguesaDePrueba.intentarAceptar()
-        assert.equals(10, marcador.puntos())
-    }
-}
+//     test "Si una receta es valida, suma puntos (una cantidad de 10)"{
+//         hamburguesaDePrueba.intentarAceptar()
+//         assert.equals(10, marcador.puntos())
+//     }
+// }

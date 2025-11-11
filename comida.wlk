@@ -16,7 +16,8 @@ class Comida {
   var ocupado = false 
   const  property nombre 
   var image = apodo + ".png" 
-   method initialize() {
+  
+  method initialize() {
     cocina.registrarComida(self)
   }
   var property apodo = nombre
@@ -54,20 +55,22 @@ class Comida {
   }
 
   method esMovible()= true
+
+  method moverAlaEsquina(){position = game.at(1,1)}
 }
 
 const pan = new Comida (faltaCocinar= false , faltaCortar=false, nombre='pan')
 const lechuga_cortada = new Comida (faltaCocinar= false , faltaCortar=false, nombre='lechuga_cortada')
-const tomate = new Comida ( position= game.at(11,9),faltaCocinar= false , faltaCortar=false, nombre='tomate')
+const tomate = new Comida ( faltaCocinar= false , faltaCortar=false, nombre='tomate')
 const carne_cortada_cocinado = new Comida (faltaCocinar= false , faltaCortar=false, nombre='carne_cortada_cocinado')
 const puerco_cortada_cocinado = new Comida (faltaCocinar= false , faltaCortar=false, nombre='puerco_cortada_cocinado')
 const huevo_cocinado = new Comida ( faltaCocinar= false , faltaCortar=false, nombre='huevo_cocinado')
 const puerco_cortada = new Comida (faltaCortar=false, nombre='puerco_cortada')
 const carne = new Comida ( nombre='carne')
 const huevo = new Comida ( faltaCortar=false, nombre='huevo')
-const lechuga = new Comida ( position= game.at(11,10),faltaCocinar= false , faltaCortar=false, nombre='lechuga')
+const lechuga = new Comida ( faltaCocinar= false , nombre='lechuga')
 const carne_cortada = new Comida ( faltaCortar=false, nombre='carne_cortada')
 const puerco = new Comida ( nombre='puerco')
 
-const puerco_cortada1 = new Comida ( position= game.at(11,11) ,faltaCortar=false, nombre='puerco_cortada')
+// const puerco_cortada1 = new Comida ( position= game.at(11,11) ,faltaCortar=false, nombre='puerco_cortada')
 
