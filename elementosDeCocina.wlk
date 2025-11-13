@@ -94,7 +94,7 @@ method image() {
 
     method intentarAceptar(chef) {
         if (sistemaDeRecetas.completita(self)){
-           chef.actualizar() 
+           chef.actualizar(self) 
           
             self.volver()
             ingredientes.clear()

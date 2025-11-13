@@ -3,6 +3,7 @@ class Receta {
 
     const ingredientes 
     const property nombre 
+    const property puntos
 
 
 
@@ -21,10 +22,10 @@ class Receta {
 
 
 
-const hamburguesa_completa = new Receta(ingredientes=[pan, carne, lechuga, tomate],nombre='hamburguesa')
-const sandwich_bacon = new Receta(ingredientes=[pan, puerco, lechuga, tomate],nombre='sandwich_bacon')
-const ensalada = new Receta(ingredientes=[lechuga, tomate],nombre='ensalada')
-const bacon_huevo = new Receta(ingredientes=[huevo, puerco],nombre='huevo_bacon')
+const hamburguesa_completa = new Receta(ingredientes=[pan, carne, lechuga, tomate],nombre='hamburguesa',puntos=50)
+const sandwich_bacon = new Receta(ingredientes=[pan, puerco, lechuga, tomate],nombre='sandwich_bacon',puntos=50)
+const ensalada = new Receta(ingredientes=[lechuga, tomate],nombre='ensalada',puntos=20)
+const bacon_huevo = new Receta(ingredientes=[huevo, puerco],nombre='huevo_bacon',puntos=30)
 
 object sistemaDeRecetas {
   const todasLasRecetas = [hamburguesa_completa,sandwich_bacon,ensalada,bacon_huevo]
@@ -38,8 +39,6 @@ object sistemaDeRecetas {
   
   method queCOSA(plato) =
     todasLasRecetas.find({ receta => receta.completa(plato) })
-
-
 
 
 

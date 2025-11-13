@@ -21,9 +21,12 @@ class GeneradorComida {
   method interactuarCon(chef) {
     self.generar()
   }
+
+  method puedeMoverA(destino) = destino ==self.position() 
   
   method initialize() {
     cocina.registrarobjetosInteractivos(self)
+    pared.registrarbloque(self)
   }
 
 }

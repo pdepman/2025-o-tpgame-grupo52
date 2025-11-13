@@ -4,6 +4,7 @@ import elementosDeCocina.*
 import spawn.*
 import teclasYposiciones.*
 import score.*
+import receta.*
 
 class Chef {
   var cambio = ""
@@ -20,8 +21,8 @@ class Chef {
   
   method image() = ((nombre + sufijo) + cambio) + ".png"
 
-   method actualizar() {
-        contador.incrementar(10)
+   method actualizar(plato) {
+        contador.incrementar(sistemaDeRecetas.queCOSA(plato).puntos())
     }
   
   method mover(desplazamiento) {
