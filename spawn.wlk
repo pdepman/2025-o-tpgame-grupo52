@@ -2,6 +2,7 @@ import comida.*
 import wollok.game.*
 import hitbox.* 
 import chef.*
+import elementosDeCocina.*
 
 
 
@@ -20,6 +21,11 @@ class GeneradorComida {
   method interactuarCon(chef) {
     self.generar()
   }
+  
+  method initialize() {
+    cocina.registrarobjetosInteractivos(self)
+  }
+
 }
 
 const generadorPan = new GeneradorComida(position =  game.at(8,6),fCocinar= false , fCortar=false, tipoComida = 'pan')

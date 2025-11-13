@@ -79,7 +79,7 @@ class Chef {
   
   method intentarInteraccion() {
     const posAdelante = self.posicionAdelante()
-    const objetoCercano = objetosInteractivos.find(
+    const objetoCercano = cocina.objetosInteractivos().find(
       { o => o.position() == posAdelante }
     )
     
@@ -158,12 +158,12 @@ class Chef {
     }
   }
   
-  method encontrarPlatoDestino(ingrediente) = platos.find(
+  method encontrarPlatoDestino(ingrediente) = cocina.platos().find(
     { p => p.position() == ingrediente.position() }
   )
   
-  method colocarIngredienteEnPlato(ingrediente, platoDestino) {
-    if (ingrediente != platoDestino) {
+ method colocarIngredienteEnPlato(ingrediente, platoDestino) {
+    if (platoDestino != null and (not ingrediente.esPlato() and not platoDestino.sucio())) {
       platoDestino.agregarIngrediente(ingrediente)
       ingrediente.ocupado(false)
       self.moverComida(ingrediente)
@@ -171,18 +171,21 @@ class Chef {
       cambio = ""
       game.removeVisual(ingrediente)
       ingrediente.moverAlaEsquina()
+      
     }
-  }
+}
   
   method verificarCajonYTacho() {
-    platos.forEach(
-      { p =>
-        if (p.position() == cajon1.position()) p.intentarAceptar(self)
-        if (p.position() == tacho1.position()) p.eliminarComida()
-      }
-    )
+  cocina.platos().forEach({ plato =>
+    
+    if (cocina.cajones().any({ cajon => plato.position() == cajon.position() }) ) plato.intentarAceptar(self)
+    
+
+    if (cocina.tachos().any({ tacho => plato.position() == tacho.position() })) plato.eliminarComida()})
   }
-}
+  }
+
+
 
 const jugador1 = new Chef(nombre = "chefOriginal", position = game.at(8, 3),contador = marcador1)
 

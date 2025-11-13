@@ -60,7 +60,7 @@ class Tope {
 
 const topeAbajo = new Tope(position=game.at(0, 2))
 
-const topeArriba = new Tope(position=game.at(0, 11))
+const topeArriba = new Tope(position=game.at(0, 10))
 
 const topeIzq = new Tope(position=game.at(5, 0))
 

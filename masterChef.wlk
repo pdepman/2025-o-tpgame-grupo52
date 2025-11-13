@@ -31,7 +31,8 @@ object masterChefGame{
 	game.addVisual(generadorHuevo)
 	game.addVisual(generadorPuerco)
 	game.addVisual(generadorTomate)
-
+	game.addVisual(plato3)
+	game.addVisual(plato4)
 	game.addVisual(plato1)
 	game.addVisual(plato2)
 	game.addVisual(tacho1)

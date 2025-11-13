@@ -2,6 +2,7 @@ import comida.*
 class Receta {
 
     const ingredientes 
+    const property nombre 
 
 
 
@@ -13,21 +14,17 @@ class Receta {
 
     method mismaCantidad (ingredientesDisponibles)= ingredientesDisponibles.size() == ingredientes.size()
     
-    method todoComible(ingredientesDisponibles)= ingredientesDisponibles.all{ingrediente=>ingrediente.ingredienteListo()}
 
-    method completa(plato) = self.contiene(plato.ingredientes()) and self.mismaCantidad(plato.ingredientes())and self.todoComible(plato.ingredientes())
+    method completa(plato) = self.contiene(plato.ingredientes()) and self.mismaCantidad(plato.ingredientes())and plato.todoComible()
 
-
-
-    
 }   
 
 
 
-const hamburguesa_completa = new Receta(ingredientes=[pan, carne, lechuga, tomate])
-const sandwich_bacon = new Receta(ingredientes=[pan, puerco, lechuga, tomate])
-const ensalada = new Receta(ingredientes=[lechuga, tomate])
-const bacon_huevo = new Receta(ingredientes=[huevo, puerco])
+const hamburguesa_completa = new Receta(ingredientes=[pan, carne, lechuga, tomate],nombre='hamburguesa')
+const sandwich_bacon = new Receta(ingredientes=[pan, puerco, lechuga, tomate],nombre='sandwich_bacon')
+const ensalada = new Receta(ingredientes=[lechuga, tomate],nombre='ensalada')
+const bacon_huevo = new Receta(ingredientes=[huevo, puerco],nombre='huevo_bacon')
 
 object sistemaDeRecetas {
   const todasLasRecetas = [hamburguesa_completa,sandwich_bacon,ensalada,bacon_huevo]
@@ -37,6 +34,13 @@ object sistemaDeRecetas {
   
   method completita(plato) =
     todasLasRecetas.any({ receta => receta.completa(plato) })
+
   
+  method queCOSA(plato) =
+    todasLasRecetas.find({ receta => receta.completa(plato) })
+
+
+
+
 
 }
