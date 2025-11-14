@@ -179,10 +179,9 @@ class Chef {
   method verificarCajonYTacho() {
   cocina.platos().forEach({ plato =>
     
-    if (cocina.cajones().any({ cajon => plato.position() == cajon.position() }) ) plato.intentarAceptar(self)
+    if (cocina.cajones().any({ cajon => plato.position() == cajon.position() }) ) (cocina.cajones().find({ cajon => plato.position() == cajon.position()}).intentarAceptar(self,plato))
     
-
-    if (cocina.tachos().any({ tacho => plato.position() == tacho.position() })) plato.eliminarComida()})
+    if (cocina.tachos().any({ tacho => plato.position() == tacho.position() })) (cocina.tachos().find({ tacho => plato.position() == tacho.position() })).eliminarComida(plato)})
   }
   }
 

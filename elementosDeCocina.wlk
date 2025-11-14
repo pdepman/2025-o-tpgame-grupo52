@@ -21,12 +21,29 @@ class ContenedorDeIngredientes {
 
 class Cajon inherits ContenedorDeIngredientes{
 
+    method intentarAceptar(chef,plato) {
+        if (sistemaDeRecetas.completita(plato)){
+           chef.actualizar(plato) 
+            plato.volver()
+            plato.ingredientes().clear()
+            plato.ensuciar()
+        } 
+    }
+
+
 }
 const cajon1 = new Cajon(position = game.at(11,11))
 const cajon2 = new Cajon(position = game.at(12,11))
 
 class Tacho inherits ContenedorDeIngredientes {
     method image() = 'tacho.png'
+
+    
+    method eliminarComida(plato){
+        plato.ingredientes().clear()
+        plato.volver()
+        plato.ensuciar()
+    }
 
 
 }
@@ -91,22 +108,6 @@ method image() {
   method agregarIngrediente(i) = ingredientes.add(i)
 
     method ingredientes() = ingredientes
-
-    method intentarAceptar(chef) {
-        if (sistemaDeRecetas.completita(self)){
-           chef.actualizar(self) 
-          
-            self.volver()
-            ingredientes.clear()
-            self.ensuciar()
-        } 
-    }
-
-    method eliminarComida(){
-        ingredientes.clear()
-        self.volver()
-        self.ensuciar()
-    }
 
     method volver(){
         position = posicionOriginal
