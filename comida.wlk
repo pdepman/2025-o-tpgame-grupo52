@@ -74,5 +74,3 @@ const lechuga = new Comida ( faltaCocinar= false , nombre='lechuga')
 const carne_cortada = new Comida ( faltaCortar=false, nombre='carne_cortada')
 const puerco = new Comida ( nombre='puerco')
 
-// const puerco_cortada1 = new Comida ( position= game.at(11,11) ,faltaCortar=false, nombre='puerco_cortada')
-

@@ -22,16 +22,19 @@ class ContenedorDeIngredientes {
 class Cajon inherits ContenedorDeIngredientes{
 
     method intentarAceptar(chef,plato) {
-        if (sistemaDeRecetas.completita(plato)){
+        if (sistemaDeRecetas.completita(plato) and (sistemaPedidos.estaElPedido(sistemaDeRecetas.queCOSA(plato)))){
            chef.actualizar(plato) 
+           sistemaPedidos.completarPedido(sistemaDeRecetas.queCOSA(plato))
             plato.volver()
             plato.ingredientes().clear()
             plato.ensuciar()
         } 
     }
 
-
 }
+
+
+
 const cajon1 = new Cajon(position = game.at(11,11))
 const cajon2 = new Cajon(position = game.at(12,11))
 
@@ -175,9 +178,9 @@ class Lavavajilla {
 }
 
 const lavavajilla1 = new Lavavajilla(position=game.at(4,9))
-const lavavajilla2 = new Lavavajilla(position=game.at(4,10))
+const lavavajilla2 = new Lavavajilla(position=game.at(4,8))
 const lavavajilla3 = new Lavavajilla(position=game.at(19,9))
-const lavavajilla4 = new Lavavajilla(position=game.at(19,10))
+const lavavajilla4 = new Lavavajilla(position=game.at(19,8))
 
 class Tabla {
   var property position = game.center()

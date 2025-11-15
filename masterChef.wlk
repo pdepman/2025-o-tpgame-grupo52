@@ -1,3 +1,4 @@
+import receta.*
 import hitbox.*
 import chef.*
 import comida.*
@@ -15,15 +16,23 @@ object masterChefGame{
 	game.cellSize(40) 
 
 
-    game.boardGround("fondo_test5.png")
+    game.boardGround("fondo1.png")
 
 	temporizador.iniciar()
+
+
+
 	
 
 	game.addVisual(jugador1)
 	game.addVisual(jugador2)
 	game.addVisual(cajon1)
 	game.addVisual(cajon2)
+	// game.addVisual(cartel1)
+	// game.addVisual(cartel2)
+	// game.addVisual(cartel3)
+
+	// 	game.addVisual(cartel5)
  
 	game.addVisual(generadorPan)
 	game.addVisual(generadorCarne)
@@ -44,7 +53,11 @@ object masterChefGame{
 	game.addVisual(marcador1)
 	game.addVisual(marcador2)
 
+	// sistemaPedidos.iniciar()
+	 const tick = game.tick(10000, { sistemaPedidos.generarPedido() }, sistemaPedidos.pedidosActivos().size() < sistemaPedidos.maxPedidos())
+     tick.start()
 
+	
 		
     configTeclas.iniciar()
     }

@@ -7,7 +7,7 @@ object temporizadorVisual {
     
     method text() = "⏰ " + miTiempo
     method textColor() = "FF0000FF"
-    method fontSize() = 40
+    method fontSize() = 50
     
     method cambiarTiempo(nuevoTiempo) {
         miTiempo = nuevoTiempo
@@ -83,16 +83,16 @@ object temporizador {
     method mostrarVictoria1() {
         console.println("🏆 ¡VICTORIA a chef 1 !")
         var mensaje = object {
-            var property position = game.at(6, 1)
-            method image() = "you_win.jpg"
+            var property position = game.at(4, 1)
+            method image() = "chef1gano.png"
         }
         game.addVisual(mensaje)
     }
     method mostrarVictoria2() {
         console.println("🏆 ¡VICTORIA a chef 2 !")
         var mensaje = object {
-            var property position = game.at(6, 1)
-            method image() = "you_win.jpg"
+            var property position = game.at(4, 1)
+            method image() ='chef2gano.png'
         }
         game.addVisual(mensaje)
     }
@@ -100,8 +100,8 @@ object temporizador {
     method mostrarDerrota() {
         console.println("Empate")
         var mensaje = object {
-            var property position = game.at(6, 6)
-            method image() = "you_lose.jpg"
+            var property position = game.at(4, 1)
+            method image() = "chefEmpate.png"
         }
         game.addVisual(mensaje)
     }

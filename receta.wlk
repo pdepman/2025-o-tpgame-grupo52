@@ -40,6 +40,6 @@ object sistemaDeRecetas {
   method queCOSA(plato) =
     todasLasRecetas.find({ receta => receta.completa(plato) })
 
-
+  method recetaRandom() =todasLasRecetas.randomized().head()
 
 }
