@@ -13,7 +13,7 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 
 DOS CHEFS - UNA COMPETENCIA
 
-Prepara recetas con el límite del tiempo y compite con otro chef para ver quién obtiene más puntos antes de que se acabe el tiempo.
+Prepara recetas y compite con otro chef para ver quién obtiene más puntos antes de que se acabe el tiempo.
 
 ## Capturas
 
@@ -37,8 +37,14 @@ Prepara recetas con el límite del tiempo y compite con otro chef para ver quié
 6. Gana puntos por cada receta correctamente entregada
 
 - Ingredientes:
-🍞 Pan, 🥬 Lechuga, 🍅 Tomate
-🍔 Carne, 🥓 Bacon, 🥚 Huevo
+
+Ingrediente	   Estado Crudo	               Estado Preparado
+🍞 Pan	      Listo para usar	
+🥬 Lechuga	  Necesita corte	             Lechuga cortada
+🍅 Tomate	    Listo para usar	
+🍔 Carne	    Necesita corte y cocción	   Carne cortada cocinada
+🥓 Bacon	    Necesita corte y cocción	   Bacon cocinado
+🥚 Huevo	    Necesita cocción	           Huevo cocinado
 
 - RECETAS:
   
@@ -80,8 +86,7 @@ A modo de conclusión, podemos afirmar que este diseño está caracterizado por 
 
 ## Diagrama estático 
 
-https://lucid.app/lucidchart/424da17c-27be-4838-b062-df629ca750aa/view
-
+https://lucid.app/lucidchart/c135f90a-7a96-45da-8b8d-158314a9e7b4/view
 
 
 
