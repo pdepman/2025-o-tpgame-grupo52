@@ -24,11 +24,14 @@ class Cajon inherits ContenedorDeIngredientes{
 
     method intentarAceptar(chef,plato) {
         if (sistemaDeRecetas.completita(plato) and (sistemaPedidos.estaElPedido(sistemaDeRecetas.queCOSA(plato)))){
-           chef.actualizar(plato) 
-           sistemaPedidos.completarPedido(sistemaDeRecetas.queCOSA(plato))
+            chef.actualizar(plato) 
+            sistemaPedidos.completarPedido(sistemaDeRecetas.queCOSA(plato))
             plato.volver()
             plato.ingredientes().clear()
             plato.ensuciar()
+            game.say(chef,"Pedido Entregado")
+        } else {
+          game.say(chef, "Esto no lo pidieron")
         } 
     }
 
