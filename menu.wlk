@@ -16,7 +16,7 @@ object menu {
   const cursor = puntero
   
   method position()= game.at(0, 0)
-  method image() = "menu2.png"
+  method image() = "menu3.png"
 
   method iniciar() {
     game.addVisual(self)
@@ -43,9 +43,9 @@ object puntero {
   var property position = game.at(8, 3)
 
   const property posiciones = [
-    game.at(8, 9),  // Coop
-    game.at(8, 6),  // Versus
-    game.at(8, 3)  // Recetas
+    game.at(8, 8),  // Coop
+    game.at(8, 5),  // Versus
+    game.at(8, 2)  // Recetas
   ]
 
   var property numeroEleccion = 0
@@ -124,8 +124,34 @@ object versus{
 
  }
  object recetas{
+  var pagina=1
+  method position()= game.at(3, 2)
   
-  method iniciar(){}
+  method image() = "recetapag"+pagina+".png"
+
+   method derecha() {
+    if (pagina >= 4) {
+      pagina = 4
+    }else{pagina += 1}
+  
+  }
+
+  method izquierda() {
+    if (pagina <=1) {
+      pagina = 1
+    }else{pagina -= 1}
+    }
+  
+  method iniciar(){
+    game.addVisual(self)
+    configTeclas.setModoGuia()
+  }
+   method salir(){
+    game.removeVisual(self)
+    configTeclas.setModoMenu()
+  }
+
+
 
  }
 

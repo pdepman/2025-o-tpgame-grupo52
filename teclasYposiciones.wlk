@@ -25,6 +25,7 @@ object configTeclas {
 
     keyboard.m().onPressDo({ tecladoActual.abrirMenu() })
 
+    keyboard.space().onPressDo({ tecladoActual.salirguia() })
   }
 
   method setModoJuego() {
@@ -33,6 +34,9 @@ object configTeclas {
 
     method setModoMenu() {
       tecladoActual = tecladoMenu
+    }
+   method setModoGuia() {
+      tecladoActual = tecladoGuia
     }
 }
 object tecladoJuego {
@@ -52,12 +56,13 @@ object tecladoJuego {
   method shift() { jugador2.intentarInteraccion() }
   method abrirMenu() {menu.iniciar()}
   method reiniciar() { }
+  method salirguia() {}
 }
 object tecladoMenu {
 
   method w() { menu.moverCursorArriba() }
   method s() { menu.moverCursorAbajo() }
-  method enter() { menu.seleccionarOpcion() }
+  method enter() { menu.seleccionarOpcion()}
 
   // Las demás teclas no hacen nada
   method a() {}
@@ -70,7 +75,28 @@ object tecladoMenu {
   method right() {}
   method shift() {}
   method abrirMenu() {}
+  method reiniciar() {}
+  method salirguia() {}
 }  
+
+object tecladoGuia{
+  method d() {recetas.derecha()}
+  method a() {recetas.izquierda()}
+  method salirguia() {recetas.salir()}
+
+  // Las demás teclas no hacen nada
+  method s() {}
+  method w() {}
+  method q() {}
+  method e() {}
+  method up() {}
+  method down() {}
+  method left() {}
+  method right() {}
+  method shift() {}
+  method abrirMenu() {}
+  method reiniciar() {}
+}
   
 object izquierda {
   const position = game.at(-1, 0)
