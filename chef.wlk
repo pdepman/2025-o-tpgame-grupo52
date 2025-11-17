@@ -14,6 +14,10 @@ class Chef {
   var property position = game.origin()
   var sufijo = "Default"
   var contador 
+
+  method iniciar(){
+    game.addVisual(self)
+  }
   
   method direccionObjeto() = orientacion.desplazamiento()
   

@@ -11,13 +11,14 @@ class ContenedorDeIngredientes {
     var property position = game.center()
     method puedeMoverA(destino) = destino == self.position()
 
-        method initialize() {
+  method initialize() {
     pared.registrarbloque(self)
-
-  
+  }
+  method iniciar() {
+    game.addVisual(self)
+  }
 }
 
-}
 
 class Cajon inherits ContenedorDeIngredientes{
 
@@ -63,6 +64,11 @@ class Plato {
     var estaEnInventario = false 
     var ocupado = false 
     const property esPlato = true
+  
+  
+  method iniciar() {
+    game.addVisual(self)
+  }
 
 
   method estaSucio() = sucio
@@ -127,6 +133,9 @@ class Horno {
   method initialize() {
     cocina.registrarobjetosInteractivos(self)
   }
+    method iniciar() {
+    game.addVisual(self)
+  }
 
   
   
@@ -158,6 +167,9 @@ class Lavavajilla {
   method initialize() {
     cocina.registrarobjetosInteractivos(self)
   }
+    method iniciar() {
+    game.addVisual(self)
+  }
 
   method puedeLavar(plato) = plato.estaSucio()
 
@@ -188,6 +200,9 @@ class Tabla {
 
     method initialize() {
     cocina.registrarobjetosInteractivos(self)
+  }
+    method iniciar() {
+    game.addVisual(self)
   }
 
   

@@ -1,5 +1,6 @@
 import chef.*
 import hitbox.*
+import menu.*
 
 object configTeclas {
 
@@ -21,18 +22,18 @@ object configTeclas {
     keyboard.enter().onPressDo({ tecladoActual.enter() })
     keyboard.shift().onPressDo({ tecladoActual.shift() })
 
-    // // Cambio de modo (no depende del tecladoActual)
-    // keyboard.m().onPressDo({ juego.abrirMenu() })
-    // keyboard.escape().onPressDo({ juego.cerrarMenu() })
+
+    keyboard.m().onPressDo({ tecladoActual.abrirMenu() })
+
   }
 
   method setModoJuego() {
     tecladoActual = tecladoJuego
   }
 
-//   method setModoMenu() {
-//     tecladoActual = tecladoMenu
-//   }
+    method setModoMenu() {
+      tecladoActual = tecladoMenu
+    }
 }
 object tecladoJuego {
 
@@ -49,25 +50,27 @@ object tecladoJuego {
   method right() { jugador2.intentarMover(derecha)  }
   method enter() { jugador2.tomarComida() }
   method shift() { jugador2.intentarInteraccion() }
+  method abrirMenu() {menu.iniciar()}
+  method reiniciar() { }
 }
-// object tecladoMenu {
+object tecladoMenu {
 
-//   method w() { menu.moverCursorArriba() }
-//   method s() { menu.moverCursorAbajo() }
-//   method enter() { menu.seleccionarOpcion() }
-//   method escape() { menu.cerrar() }
+  method w() { menu.moverCursorArriba() }
+  method s() { menu.moverCursorAbajo() }
+  method enter() { menu.seleccionarOpcion() }
 
-//   // Las demás teclas no hacen nada
-//   method a() {}
-//   method d() {}
-//   method q() {}
-//   method e() {}
-//   method up() {}
-//   method down() {}
-//   method left() {}
-//   method right() {}
-//   method shift() {}
-// }  method hayColisionEn(destino) = destino == jugador2.position()
+  // Las demás teclas no hacen nada
+  method a() {}
+  method d() {}
+  method q() {}
+  method e() {}
+  method up() {}
+  method down() {}
+  method left() {}
+  method right() {}
+  method shift() {}
+  method abrirMenu() {}
+}  
   
 object izquierda {
   const position = game.at(-1, 0)

@@ -12,6 +12,10 @@ class GeneradorComida {
   var fCocinar =true
   var fCortar =true
 
+  method iniciar() {
+    game.addVisual(self)
+  }
+
   method image() = 'generador_'+ tipoComida +'.png'
 
   method generar() {

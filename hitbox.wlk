@@ -9,6 +9,10 @@ class Bloque {
   var property position = game.at(5, 5)
   method image() = 'mesa.png'
 
+  method iniciar() {
+    game.addVisual(self)
+  }
+
   method puedeMoverA(destino) = destino ==self.position() 
 
   method initialize() {

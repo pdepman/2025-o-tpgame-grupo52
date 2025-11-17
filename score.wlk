@@ -6,6 +6,10 @@ class Marcador{
     var property puntos = 0
     const property position = game.at(1, 1)
 
+  method iniciar() {
+    game.addVisual(self)
+  }
+
     method incrementar(cant) {
         puntos = puntos + cant
     }
@@ -15,6 +19,7 @@ class Marcador{
     method actualizar() {
         self.incrementar(10)
     }
+    
 
   
     method text() = "Score: " + puntos
@@ -45,10 +50,6 @@ object sistemaPedidos {
   ]
 
   const property maxPedidos = 4
-
-// method iniciar() {
-//     game.schedule(20000, { self.generarPedido() })
-//   }
 
   method generarPedido() {
     
