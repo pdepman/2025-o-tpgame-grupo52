@@ -38,13 +38,18 @@ Prepara recetas y compite con otro chef para ver quién obtiene más puntos ante
 
 - Ingredientes:
 
-Ingrediente	   Estado Crudo	               Estado Preparado
-🍞 Pan	      Listo para usar	
-🥬 Lechuga	  Necesita corte	             Lechuga cortada
-🍅 Tomate	    Listo para usar	
-🍔 Carne	    Necesita corte y cocción	   Carne cortada cocinada
-🥓 Bacon	    Necesita corte y cocción	   Bacon cocinado
-🥚 Huevo	    Necesita cocción	           Huevo cocinado
+🍞 Pan (listo para usar), 
+
+🥬 Lechuga (necesita ser cortado), 
+
+🍅 Tomate (listo para usar),
+
+🍔 Carne (necesita corte y cocción), 
+
+🥓 Bacon (necesita corte y cocción), 
+
+🥚 Huevo (necesita cocción)
+
 
 - RECETAS:
   
