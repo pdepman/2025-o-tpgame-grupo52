@@ -14,7 +14,8 @@ object menu {
 
   var opciones = [coop,versus,recetas]
   const cursor = puntero
-  
+  var opcionActual = menu
+
   method position()= game.at(0, 0)
   method image() = "menu3.png"
 
@@ -36,6 +37,16 @@ object menu {
   method seleccionarOpcion() {
     const opcion = opciones.get(cursor.numeroEleccion())
     opcion.iniciar()
+    opcionActual = opcion
+  }
+
+  method reiniciar(){
+    self.iniciar()
+    opcionActual.reiniciarObjetos()
+    opcionActual.reiniciarChefs()
+    tick.start()
+    temporizador.reiniciar()
+    game.addVisual(temporizadorVisual)
   }
 }
 object puntero {
@@ -82,8 +93,17 @@ object puntero {
 }
 
 object versus{
-  const objetos=[]
-  const chefs=[]
+
+  const objetos=[generadorPan,generadorCarne,generadorHuevo,generadorPuerco,generadorTomate,generadorLechuga,plato1,plato2,plato3,plato4,tacho1,tacho2,tabla1,tabla3,tabla4,marcador1,marcador2]
+  const chefs=[jugador1,jugador2]
+
+  method reiniciarObjetos() {
+    objetos.forEach({objeto => objeto.iniciar()})
+  }
+
+  method reiniciarChefs() {
+    chefs.forEach({chef => chef.reiniciar()})
+  }
 
   method iniciar(){
     menu.cerrar()
@@ -120,6 +140,14 @@ object versus{
   }
   method inciarChefs(){
     chefs.forEach({chef=>chef.iniciar()})
+  }
+
+  method reiniciarObjetos() {
+    objetos.forEach({objeto => objeto.iniciar()})
+  }
+
+  method reiniciarChefs() {
+    chefs.forEach({chef => chef.reiniciar()})
   }
 
  }

@@ -7,6 +7,7 @@ class Marcador{
     const property position = game.at(1, 1)
 
   method iniciar() {
+    sistemaPedidos.reiniciar()
     game.addVisual(self)
   }
 
@@ -48,6 +49,10 @@ object sistemaPedidos {
     game.at(13, 13),
     game.at(17, 13)
   ]
+
+  method reiniciar() {
+    pedidosActivos = []
+  }
 
   const property maxPedidos = 4
 

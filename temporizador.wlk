@@ -3,7 +3,7 @@ import score.*
 
 object temporizadorVisual {
     var property position = game.at(1, 14)
-    var miTiempo = "02:00"
+    var miTiempo = "03:00"
 
     method text() = "⏰ " + miTiempo
     method textColor() = "FF0000FF"
@@ -46,7 +46,8 @@ object temporizador {
     method reiniciar() {
         enEjecucion = false
         tiempoRestante = duracion
-        temporizadorVisual.cambiarTiempo("02:00")
+        temporizadorVisual.cambiarTiempo("03:00")
+        
     }
 
     // ===================

@@ -19,6 +19,12 @@ class Chef {
     game.addVisual(self)
   }
   
+  method reiniciar(){
+    position = game.origin()
+    game.addVisual(self)
+    sostiene = null
+  }
+
   method direccionObjeto() = orientacion.desplazamiento()
   
   method inventarioVacio() = sostiene == null

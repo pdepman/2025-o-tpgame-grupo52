@@ -23,7 +23,8 @@ object configTeclas {
     keyboard.shift().onPressDo({ tecladoActual.shift() })
 
 
-    keyboard.m().onPressDo({ tecladoActual.abrirMenu() })
+    keyboard.m().onPressDo({ tecladoActual.abrirMenu()})
+    keyboard.f().onPressDo({ tecladoActual.reiniciar()})
 
     keyboard.space().onPressDo({ tecladoActual.salirguia() })
   }
@@ -55,7 +56,7 @@ object tecladoJuego {
   method enter() { jugador2.tomarComida() }
   method shift() { jugador2.intentarInteraccion() }
   method abrirMenu() {menu.iniciar()}
-  method reiniciar() { }
+  method reiniciar() {menu.reiniciar()}
   method salirguia() {}
 }
 object tecladoMenu {
