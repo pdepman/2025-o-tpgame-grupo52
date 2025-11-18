@@ -1,0 +1,13 @@
+
+import wollok.game.*
+import  masterChef.masterChefGame
+
+   
+program ChefGame {
+	
+	masterChefGame.iniciar()
+	
+	game.start() 
+
+}
+ 

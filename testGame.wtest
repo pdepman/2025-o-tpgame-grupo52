@@ -1,0 +1,76 @@
+import score.*
+import receta.*
+import masterChef.*
+import hitbox.*
+import chef.*
+import comida.*
+import elementosDeCocina.*
+import spawn.*
+import teclasYposiciones.*
+
+describe "test do jogo" {
+    test "Chef puede moverse a la derecha" {
+        jugador1.position(game.at(10, 5))
+        var posicionInicial = jugador1.position()
+        
+        jugador1.mover(game.at(1, 0))
+        
+        assert.notEquals(posicionInicial, jugador1.position())
+    }
+
+    test "Chef puede moverse a la izquierda" {
+        jugador1.position(game.at(10, 5))
+        var posicionInicial = jugador1.position()
+        
+        jugador1.mover(game.at(-1, 0))
+        
+        assert.notEquals(posicionInicial, jugador1.position())
+    }
+
+    test "Chef NO se mueve cuando hay colisión()" {
+        jugador1.position(game.at(10, 5))
+        var posicionInicial = jugador1.position()
+        
+        jugador1.mover(game.at(0, 1))
+        
+        assert.equals(posicionInicial, jugador1.position())
+    }
+    test "Chef NO se mueve hacia abajo cuando hay colisión" {
+        jugador1.position(game.at(10, 5))
+        var posicionInicial = jugador1.position()
+    
+        jugador1.mover(game.at(0, -1))
+    
+        assert.equals(posicionInicial, jugador1.position())
+}
+    test "Chef1 no puede moverse a la posición ocupada por Chef2" {
+        jugador2.position(game.at(7, 3)) // Chef2 en posición
+        jugador1.position(game.at(6, 3)) // Chef1 al lado
+        
+        var posIni = jugador1.position()
+        jugador1.intentarMover(derecha) // Intentar ocupar posición de Chef2
+        
+        assert.equals(posIni, jugador1.position()) // No debería moverse
+    }
+
+    test "Chef2 no puede moverse a la posición ocupada por Chef1" {
+        jugador1.position(game.at(7, 3)) // Chef1 en posición
+        jugador2.position(game.at(8, 3)) // Chef2 al lado
+        
+        var posIni = jugador2.position()
+        jugador2.intentarMover(izquierda) // Intentar ocupar posición de Chef1
+        
+        assert.equals(posIni, jugador2.position()) // No debería moverse
+    }
+
+    test "SistemaDeRecetas rechaza platos incompletos" {
+        const platoIncompleto = new Plato(posicionOriginal=game.at(10, 7))
+        platoIncompleto.agregarIngrediente(huevo)
+        assert.notThat(sistemaDeRecetas.completita(platoIncompleto))
+    }
+    test "Marcador incrementa puntos al entregar plato completo" {
+        const puntosIniciales = marcador1.puntos()
+        marcador1.incrementar(ensalada.puntos())
+        assert.equals(puntosIniciales + 20, marcador1.puntos())
+    }
+    }
