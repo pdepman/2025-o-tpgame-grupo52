@@ -11,18 +11,27 @@ class Chef {
   const nombre
   var sostiene = null
   var property orientacion = derecha
-  var property position = game.origin()
+  const property posicionOriginal 
+  var property position = posicionOriginal
   var sufijo = "Default"
   var contador 
+  const contadorCop = marcador
 
   method iniciar(){
     game.addVisual(self)
   }
+
+  method quitar() {
+    game.removeVisual(self)
+  }
   
   method reiniciar(){
-    position = game.origin()
-    game.addVisual(self)
+    position = posicionOriginal
+    cambio = ""
+    sufijo = "Default"
     sostiene = null
+    orientacion = derecha
+    contador.reiniciar()
   }
 
   method direccionObjeto() = orientacion.desplazamiento()
@@ -197,6 +206,6 @@ class Chef {
 
 
 
-const jugador1 = new Chef(nombre = "chefOriginal", position = game.at(8, 3),contador = marcador1)
+const jugador1 = new Chef(nombre = "chefOriginal", posicionOriginal = game.at(8, 3),contador = marcador1)
 
-const jugador2 = new Chef(nombre = "chefBarba", position = game.at(15, 3),contador = marcador2)
+const jugador2 = new Chef(nombre = "chefBarba", posicionOriginal = game.at(15, 3),contador = marcador2)

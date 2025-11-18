@@ -1,14 +1,18 @@
 import temporizador.*
 import chef.*
 import receta.*
+import menu.*
 class Marcador{
-    const chef 
     var property puntos = 0
     const property position = game.at(1, 1)
+    const modo 
 
   method iniciar() {
-    sistemaPedidos.reiniciar()
     game.addVisual(self)
+  }
+
+  method quitar() {
+    game.removeVisual(self)
   }
 
     method incrementar(cant) {
@@ -20,23 +24,34 @@ class Marcador{
     method actualizar() {
         self.incrementar(10)
     }
-    
-
+  method reiniciar(){
+     puntos = 0
+  }
+  method modoCopPuntos()=listaContadores.sum({contador=>contador.puntos()})
   
-    method text() = "Score: " + puntos
+    method text() = if(modo == coop){"Score: " + self.modoCopPuntos()}else "Score: " + puntos
     method textColor() = "000000FF"
     method fontSize() = 20
 }
 
-const marcador1 = new Marcador(position = game.at(1, 0),chef = jugador1)
+const listaContadores= [marcador1,marcador2]
 
-const marcador2 = new Marcador(position = game.at(21, 0),chef = jugador2)
+const marcador1 = new Marcador(position = game.at(1, 0),modo=versus)
+
+const marcador2 = new Marcador(position = game.at(21, 0),modo=versus)
+
+const marcador = new Marcador(position = game.at(21, 0),modo=coop)
 
 class Pedido {
   var property receta
   var property position 
 
   method image() = receta.nombre() + "_pedido.png"
+  
+  method borrar(){
+    game.removeVisual(self)
+  }
+
   
 }
 object sistemaPedidos {
@@ -49,9 +64,13 @@ object sistemaPedidos {
     game.at(13, 13),
     game.at(17, 13)
   ]
+  
+ 
+
 
   method reiniciar() {
-    pedidosActivos = []
+    pedidosActivos.forEach({pedido=> pedido.borrar()})
+    pedidosActivos.clear()
   }
 
   const property maxPedidos = 4

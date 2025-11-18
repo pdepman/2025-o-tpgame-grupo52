@@ -42,6 +42,12 @@ object configTeclas {
 }
 object tecladoJuego {
 
+  var modo = coop
+
+  method modo(nuevoModo){
+    modo = nuevoModo
+  }
+
   method w() { jugador1.intentarMover(arriba)}
   method s() { jugador1.intentarMover(abajo) }
   method a() { jugador1.intentarMover(izquierda) }
@@ -55,8 +61,8 @@ object tecladoJuego {
   method right() { jugador2.intentarMover(derecha)  }
   method enter() { jugador2.tomarComida() }
   method shift() { jugador2.intentarInteraccion() }
-  method abrirMenu() {menu.iniciar()}
-  method reiniciar() {menu.reiniciar()}
+  method abrirMenu() {modo.volverMenu()}
+  method reiniciar() {modo.juegoreiniciar()}
   method salirguia() {}
 }
 object tecladoMenu {

@@ -59,6 +59,9 @@ class Comida {
   method esMovible()= true
 
   method moverAlaEsquina(){position = game.at(1,1)}
+  method reiniciar(){
+    self.moverAlaEsquina()
+  game.removeVisual(self)}
 }
 
 const pan = new Comida (faltaCocinar= false , faltaCortar=false, nombre='pan')

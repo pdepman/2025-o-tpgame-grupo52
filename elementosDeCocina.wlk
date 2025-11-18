@@ -14,9 +14,7 @@ class ContenedorDeIngredientes {
   method initialize() {
     pared.registrarbloque(self)
   }
-  method iniciar() {
-    game.addVisual(self)
-  }
+
 }
 
 
@@ -45,6 +43,12 @@ const cajon2 = new Cajon(position = game.at(12,11))
 class Tacho inherits ContenedorDeIngredientes {
     method image() = 'tacho.png'
 
+      method iniciar() {
+    game.addVisual(self)
+  }
+  method quitar() {
+    game.removeVisual(self)
+  }
     
     method eliminarComida(plato){
         plato.ingredientes().clear()
@@ -71,6 +75,17 @@ class Plato {
   
   method iniciar() {
     game.addVisual(self)
+  }
+  method reiniciar(){
+    ingredientes.clear()
+     sucio = false
+     position = posicionOriginal
+     estaEnInventario = false 
+     ocupado = false
+  }
+
+  method quitar() {
+    game.removeVisual(self)
   }
 
 
@@ -208,6 +223,10 @@ class Tabla {
     game.addVisual(self)
   }
 
+  method quitar() {
+    game.removeVisual(self)
+  }
+
   
   const comidasCortables = ['lechuga','puerco','carne']
   
@@ -243,7 +262,7 @@ object cocina {
   const platos = []
   const  property cajones = [cajon1,cajon2]
   const property tachos = [tacho1,tacho2]
-  const comidas = [plato1,plato2,plato3,plato4]
+  const property comidas = [plato1,plato2,plato3,plato4]
   const objetosInteractivos=[]
 
 

@@ -15,6 +15,9 @@ class GeneradorComida {
   method iniciar() {
     game.addVisual(self)
   }
+  method quitar() {
+    game.removeVisual(self)
+  }
   
   method image() = 'generador_'+ tipoComida +'.png'
 
