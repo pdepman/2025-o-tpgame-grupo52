@@ -76,8 +76,8 @@ object tecladoMenu {
   method d() {}
   method q() {}
   method e() {}
-  method up() {}
-  method down() {}
+  method up() {menu.moverCursorArriba() }
+  method down() { menu.moverCursorAbajo()}
   method left() {}
   method right() {}
   method shift() {}
@@ -98,8 +98,8 @@ object tecladoGuia{
   method e() {}
   method up() {}
   method down() {}
-  method left() {}
-  method right() {}
+  method left() {recetas.izquierda()}
+  method right() {recetas.derecha()}
   method shift() {}
   method abrirMenu() {}
   method reiniciar() {}

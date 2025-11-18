@@ -37,12 +37,6 @@ object menu {
     opcion.iniciar()
   }
   
-  method volverMenu(modo) {
-    modo.quitarObjetos()
-    modo.quitarChefs()
-    modo.reiniciar()
-    self.iniciar()
-  }
 }
 
 object puntero {
@@ -110,6 +104,7 @@ object versus {
     tick.start()
     temporizador.modo(self)
     temporizador.iniciar()
+  
   }
 
 
@@ -152,6 +147,7 @@ object versus {
 
 
 method volverMenu() {
+
   marcador1.quitar()
 marcador2.quitar()
  menu.iniciar()
@@ -227,7 +223,7 @@ object coop {
 
 method volverMenu() {
 marcador.quitar()
- menu.iniciar()
+menu.iniciar()
 configTeclas.setModoMenu()
 }}
 
