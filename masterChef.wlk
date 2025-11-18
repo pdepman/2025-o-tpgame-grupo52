@@ -16,7 +16,7 @@ object masterChefGame{
 	game.width(24)
 	game.cellSize(40) 
 
-    game.boardGround("fondo.png")
+    game.boardGround("fondofinal.png")
     configTeclas.iniciar()
     menu.iniciar()
 
